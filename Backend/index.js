@@ -52,6 +52,17 @@ process.on('unhandledRejection', (err) => {
 
 });
 
+if(process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  app.use(express.static(path.resolve(__dirname, '../build')));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+  });
+}else{
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 // Graceful shutdown
 process.on('SIGINT', () => {
   console.log('Server is shutting down...');
