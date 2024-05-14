@@ -1,5 +1,5 @@
 import React from "react";
-import Trello from "../../Images/TrelloBoard_Timeline_2x.png";
+import Trello from "../../images/TrelloBoard_Timeline_2x.png";
 function HomeSection3() {
   return (
     <div>
