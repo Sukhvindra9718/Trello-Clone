@@ -80,7 +80,10 @@ color: blue;
 }
 .section3_ribin p{
     height: 0px;
-    color:rgb(9, 30, 66);
+    display: flex;
+    color: rgb(9, 30, 66);
+    justify-content: center;
+    align-items: center;
 }
 .section3_ribin a{
     appearance: none;
@@ -102,4 +105,4 @@ color: blue;
     color: rgb(1, 1, 212);
 }
  */
-
+/* it is updated */
