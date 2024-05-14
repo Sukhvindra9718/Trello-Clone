@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import '../styles/Header.css'
 function Header() {
   return (
@@ -23,11 +23,11 @@ function Header() {
       </section>
         <section className='section_login'>
           <h3 className='inline-block'>Log in</h3>
-          <a className='h-full  rounded-none'> Get Trello for free</a>
+          <Link className='h-full  rounded-none'> Get Trello for free</Link>
         </section>
         </div>
       <section className='section3_ribin'>
-      <p>Accelerate your teams' work with Atlassian Intelligence (AI) features 🤖 now available for all Premium and Enterprise!<a href="">Learn more.</a></p>
+      <p>Accelerate your teams' work with Atlassian Intelligence (AI) features 🤖 now available for all Premium and Enterprise!<Link href="">Learn more.</Link></p>
       </section>
     </header>
    
