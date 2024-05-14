@@ -47,6 +47,10 @@ function HomeSection4() {
           otherLinkTitle={"Learn more about Enterprise"}
         />
       </div>
+      <div className='brand'>
+      <p></p> Join over 2,000,000 teams worldwide that are using Trello to get more done.
+        <img src='https://images.ctfassets.net/rz1oowkt5gyp/19rAABnbk8KNNuh3zJzsmr/210fb8ee51dea14595462f844b7c9beb/logos-horizontal-visa-coinbase-john-deere-zoom-grand-hyatt-fender.svg' alt='logos' />
+      </div>
     </div>
   )
 }
