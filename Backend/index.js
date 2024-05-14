@@ -9,7 +9,7 @@ const authRoute = require('./routes/authRoutes');
 // const cardRoute = require('./routes/card');
 // const { verifyToken } = require('./middleware/verifyToken');
 
-dotenv.config();
+dotenv.config({ path: '.env.development.local' })
 
 
 // Connect to DB
