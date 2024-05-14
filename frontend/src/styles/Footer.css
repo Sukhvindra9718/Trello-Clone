@@ -9,9 +9,9 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15vh;
+    height: 20vh;
     gap: 2rem;
-    width: 60%;
+    width: 70%;
 }
 .footer-top-container div:first-child{
     align-self: flex-start;
@@ -38,9 +38,9 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 7vh;
+    height: 10vh;
     gap: 2rem;
-    width: 60%;
+    width: 70%;
 }
 
 .footer-bottom-container img{
