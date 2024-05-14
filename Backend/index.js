@@ -9,7 +9,7 @@ const authRoute = require('./routes/authRoutes');
 // const cardRoute = require('./routes/card');
 // const { verifyToken } = require('./middleware/verifyToken');
 
-dotenv.config({ path: '.env.development.local' })
+dotenv.config({ path: './Backend/.env.development.local' });
 
 
 // Connect to DB
@@ -54,9 +54,9 @@ process.on('unhandledRejection', (err) => {
 
 if(process.env.NODE_ENV === 'production') {
   const path = require('path');
-  app.use(express.static(path.resolve(__dirname, '../build')));
+  app.use(express.static(path.resolve(__dirname, '../frontend/build')));
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
   });
 }else{
   app.get('/', (req, res) => {
