@@ -1,2 +1,122 @@
 
+.home-section4{
+    background: linear-gradient(rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto no-repeat scroll padding-box border-box transparent;
+    background-blend-mode: normal;
+}
+.price-description-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+.price-description-container h1{
+    font-size: 40px;
+    font-weight: 700;
+    color: rgb(23, 43, 77);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.price-description-container button{
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: rgb(0, 101, 255);
+    border: 1px solid rgb(0, 101, 255);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+.price-description-container button:hover{
+    background-color: rgb(0, 82, 204);
+    border-color: rgb(0, 82, 204);
+}
+.price-description-container p{
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.price-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.price-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px;
+  width: 300px;
+  height: 500px;
+}   
+.price-card h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+.price-card h2 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+.price-card h2 span {
+  font-size: 54px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 10px;
+}
+.desc-container{
+    height: 200px;
+}
+.price-card .large-desc{
+    font-size: 18px;
+    color: rgb(9, 30, 66);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.price-card .small-desc{
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+.price-card button {
+  padding: 8px 20px;
+  border: 1px solid rgb(0, 184, 217);
+  border-radius: 5px;
+  background-color: #fff;
+  color: rgb(23, 43, 77);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  /* margin-top: 2rem; */
+}
+
+.price-card button:hover {
+  background-color: rgb(230, 252, 255);
+  border-color: rgb(0, 184, 217);;
+}
+
+
+.price-card .link-btn{
+    background-color: transparent;
+    padding: 0;
+    margin-top: 2rem;
+
+}
+.price-card .link-btn span{
+    text-decoration: underline;
+    color: rgb(0, 82, 204);
+}
 

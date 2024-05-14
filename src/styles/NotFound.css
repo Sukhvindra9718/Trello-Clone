@@ -13,17 +13,17 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  h1 {
+  .not-found-content h1 {
     margin-top: 0;
     color: #ff6347; /* Tomato color for emphasis */
   }
   
-  p {
+  .not-found-content p {
     margin-bottom: 20px;
     color: #666;
   }
   
-  button {
+  .not-found-content button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -33,7 +33,7 @@
     transition: background-color 0.3s ease;
   }
   
-  button:hover {
+  .not-found-content button:hover {
     background-color: #0056b3;
   }
   
