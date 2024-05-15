@@ -1,12 +1,17 @@
 import React from "react";
 import Trello from "../../images/TrelloBoard_Timeline_2x.png";
+import TrelloCalender from "../../images/Trello_Calendar.png";
+import Integrations_Puzzle from "../../images/Integrations_Puzzle.svg";
+import Gears from "../../images/Gears.svg";
+import Search_Value from "../../images/Search_Value.svg";
+
 function HomeSection3() {
   return (
     <div>
-      <section className="w-full h-[980px] flex flex-col    bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center  p-10  ">
-        <div className="flex  gap-3 justify-between">
+      <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center p-10  ">
+        <div className="flex  gap-3 justify-between ">
           <div className=" flex left-0">
-            <svg width="289" height="951" xmlns="http://www.w3.org/2000/svg">
+            <svg width="289" height="950" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#a)">
                 <g opacity="0.2" fill="#fff">
                   <path fillOpacity="0.01" d="M17 717h80v80H17z" />
@@ -45,7 +50,7 @@ function HomeSection3() {
               </defs>
             </svg>
           </div>
-          <div className="flex flex-col items-center  gap-16 ">
+          <div className="flex flex-col items-center h-full gap-16 ">
             <div className="  flex flex-col items-center   ">
               <h1 className="text-white text-3xl my-2 font-semibold">
                 See work in a whole new way
@@ -70,7 +75,7 @@ function HomeSection3() {
                 <img src={Trello} className="w-[555px] h-[300px]" alt="" />
               </div>
               <div className="w-1/2  flex flex-col gap-2 items-center justify-center px-2">
-                <div className="flex self-start mb-2 ">
+                <div className="flex self-start  ">
                   <svg
                     className="w-6 h-6 mt-[2px] text-[#8778D9]"
                     fill="currentColor"
@@ -93,6 +98,41 @@ function HomeSection3() {
                 >
                   Learn more about Timeline view
                 </a>
+              </div>
+            </div>
+            {/* 2part */}
+            <div className=" w-[1100px] h-[360px] flex gap-5  rounded-lg bg-slate-50 p-4  shadow-2xl border-slate-900">
+              <div className="w-1/2  flex flex-col gap-2 items-center justify-center px-2 ">
+                <div className="flex self-start  ">
+                  <svg
+                    fill="currentColor"
+                    aria-hidden="true"
+                    viewBox="0 0 32 32"
+                    className="w-6 h-6 my-[2px] -mt-0.5 text-[#00C7E5]"
+                  >
+                    <path d="M6.66 6.667h18.68A2.66 2.66 0 0 1 28 9.325v16.016A2.659 2.659 0 0 1 25.34 28H6.66A2.66 2.66 0 0 1 4 25.341V9.325a2.659 2.659 0 0 1 2.66-2.658ZM6.667 12v12A1.333 1.333 0 0 0 8 25.333h16A1.333 1.333 0 0 0 25.333 24V12H6.667ZM8 5.333a1.333 1.333 0 0 1 2.667 0v1.334H8V5.333Zm13.333 0a1.333 1.333 0 0 1 2.667 0v1.334h-2.667V5.333Zm-12 12v-2.668H12v2.668H9.333Zm10.667 0v-2.668h2.667v2.668H20Zm-5.333 0v-2.668h2.668v2.668h-2.668Zm-5.334 5.334V20H12v2.667H9.333Zm5.334 0V20h2.668v2.667h-2.668Zm5.333 0V20h2.667v2.667H20Z"></path>
+                  </svg>
+                  <h2 className=" self-start ml-2">STAY ON TOP OF TASKS</h2>
+                </div>
+                <p className=" text-justify px-2">
+                  Start each day without any surprises. Whether scheduling an
+                  editorial calendar or staying on top of to-dos, Calendar view
+                  is like a crystal ball giving you a clear vision of what work
+                  lies ahead.
+                </p>
+                <a
+                  className="bg-white text-blue-600 underline self-start"
+                  href="$"
+                >
+                  Learn more about Calendar view
+                </a>
+              </div>
+              <div>
+                <img
+                  src={TrelloCalender}
+                  className="w-[555px] h-[300px]"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -138,6 +178,88 @@ function HomeSection3() {
           </div>
         </div>
       </section>
+      <div className="w-screen min-h-20 "></div>
+      <div className="w-screen  h-52 flex flex-col gap-4 pl-12  py-2 my-10 ml-44 ">
+        <div className="flex  mt-20  items-center">
+          <p className=" font-medium text-sm">POWERFUL WAYS TO GROW</p>
+        </div>
+        <h1 className="text-3xl font-bold">Do more with Trello</h1>
+        <p className=" font-medium">
+          {"Trello’s"} intuitive features give any team the ability to quickly
+          set up <br /> and customize workflows for just about anything.
+        </p>
+      </div>
+      {/* card */}
+      <div className=" flex p-4 px-20 m-10  items-center justify-evenly ">
+        {/* card 1 */}
+        <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
+          <figure>
+            <img
+              style={{ width: "100px", height: "100px" }}
+              src={Integrations_Puzzle}
+              alt="Shoes"
+            />
+          </figure>
+          <div className="card-body ">
+            <h2 className="card-title my-2">Integrations</h2>
+            <p>
+              Connect the apps your team already uses into your Trello workflow
+              or add a Power-Up to fine-tune your specific needs.
+            </p>
+            <div className="card-actions justify-end mt-2">
+              <button className="  border-2 border-indigo-300   outline-1 p-1 outline-indigo-200 hover:bg-indigo-100">
+                Browse Integrations
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* card 2 */}
+        <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md ">
+          <figure>
+            <img
+              style={{ width: "100px", height: "100px" }}
+              src={Gears}
+              alt="Shoes"
+            />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">Butler Automation</h2>
+            <p>
+              No-code automation is built into every Trello board. Focus on the
+              work that matters most and let the robots do the rest.
+            </p>
+            <div className="card-actions justify-end mt-2">
+              <button className="  border-2 border-indigo-300   outline-1 p-1 outline-indigo-200 hover:bg-indigo-100">
+                Get to know Automation
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* card 3 */}
+        <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
+          <figure>
+            <img
+              style={{ width: "100px", height: "100px" }}
+              src={Search_Value}
+              alt="Shoes"
+            />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">Trello Enterprise</h2>
+            <p>
+              The productivity tool teams love, paired with the features and
+              security needed for scale.
+            </p>
+            <div className=" flex card-actions mt-8  ">
+              <button className="border-2 border-indigo-300 outline-1 p-1 outline-indigo-200 hover:bg-indigo-100">
+                Explore Enterprise
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* carousel */}
+      <div className=" px-60"></div>
     </div>
   );
 }
