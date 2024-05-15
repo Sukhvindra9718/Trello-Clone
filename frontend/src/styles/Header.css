@@ -7,6 +7,8 @@
     
 }
 .shadow{
+    position: fixed;
+    background-color: white;
     width: 100%;
     height: 55px;
     grid-column: 1/3;
@@ -80,7 +82,10 @@ color: blue;
 }
 .section3_ribin p{
     height: 0px;
-    color:rgb(9, 30, 66);
+    display: flex;
+    color: rgb(9, 30, 66);
+    justify-content: center;
+    align-items: center;
 }
 .section3_ribin a{
     appearance: none;
@@ -95,11 +100,5 @@ color: blue;
     color: rgb(1, 1, 212);
 }
 
-
-
-/* .section3_ribin a:hover{
-    background-color: transparent;
-    color: rgb(1, 1, 212);
-}
- */
-
+ 
+ /*New update */
