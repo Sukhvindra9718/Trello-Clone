@@ -37,6 +37,7 @@ app.use((err, req, res, next) => {
 // Event listener for uncaught exceptions
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
+  process.exit(1); // exit with failure
   // Optionally, you can perform additional cleanup or logging here
 });
 
@@ -55,7 +56,7 @@ process.on('unhandledRejection', (err) => {
 if(process.env.NODE_ENV === 'production') {
   const path = require('path');
   app.use(express.static(path.resolve(__dirname, '../frontend/build')));
-  app.get('/', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
   });
 }else{
