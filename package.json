@@ -5,7 +5,7 @@
   "main": "Backend/index.js",
   "scripts": {
     "start": "node Backend/index.js",
-    "dev": "cd frontend && npm run build && cd .. && node Backend/index.js"
+    "dev": "cd Frontend-Trello && npm run build && cd .. && node Backend/index.js"
   },
   "keywords": [],
   "author": "",
