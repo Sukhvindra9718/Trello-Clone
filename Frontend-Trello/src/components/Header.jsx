@@ -4,8 +4,8 @@ import '../styles/Header.css'
 function Header() {
   return (
 
-    <header className='w-screen h-28 grid grid-rows-[50%_50%] border-red border-2'>
-    <div className=' z-10 w-screen grid  grid-cols-[60%_40%] col-span-full bg-white  hover:shadow-md w-full shadow-black duration-700 fixed'>
+    <header className='w-full h-28 grid grid-rows-[50%_50%] border-red border-2'>
+    <div className=' z-10 w-full grid  grid-cols-[60%_40%] col-span-full bg-white  hover:shadow-md shadow-black duration-700 fixed'>
       {/* navbar */}
       <nav className=''>
         <ul className=' col-start-1 col-end-2   h-14 flex flex-wrap items-center justify-start list-none text-base gap-10 '>
@@ -21,24 +21,24 @@ function Header() {
               </NavLink>
             </li>
             <li className='relative left-20 hover:text-blue-500'> <NavLink to="#"  className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`} to="#" >
+              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
                 Solutions   <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
               </NavLink>
             </li>
             <li className='relative left-20 hover:text-blue-500'> <NavLink to="#" className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`} to="#" >
+              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
                 Plans  <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
               </NavLink>
             </li>
             <li className='relative left-20 hover:text-blue-500'>
             <NavLink to="#" className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`} to="#" >
+              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
                 Pricing   <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
               </NavLink>
             </li>
             <li className='relative left-20 hover:text-blue-500'>
             <NavLink to="#"  className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`} to="#" >
+              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
                 Resources   <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
               </NavLink>
             </li>
