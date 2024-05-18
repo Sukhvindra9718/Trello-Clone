@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound.jsx';
 import ServerError from './pages/ServerError.jsx';
 import Unauthorized from './pages/Unauthorized.jsx';
 import TaskManagement from './pages/TaskManagement.jsx';
+import Dashboard from './pages/Dashboard.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Route>
         
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/task-management" element={<TaskManagement />} />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/server-error" element={<ServerError />} />
