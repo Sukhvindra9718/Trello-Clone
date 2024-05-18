@@ -1,10 +1,34 @@
 import React from 'react'
 import "../styles/Dashboard.css"
 import { Link } from 'react-router-dom'
-import {IoSearchOutline } from "react-icons/io5";
+import { IoSearchOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
+
 function Dashboard() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        const url = 'http://192.168.120.79:5000/api/user/logout'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        }).then(async (res) => {
+            const data = await res.json();
+    
+            if (data.success) {
+               navigate('/login');
+            } else {
+                navigate('/server-error')
+            }
+        })
+
+
+    }
     return (
         <header>
             <nav className='h-14 dash-header p-2 flex justify-between'>
@@ -21,7 +45,7 @@ function Dashboard() {
                         <button className="flex items-center p-2 gap-2 header-btn" type="button" data-testid="workspace-switcher" aria-haspopup="true" aria-expanded="false" title="Workspaces" aria-label="Workspaces">
                             <span className="">Workspaces</span>
                             <span className="">
-                                <span data-testid="DownIcon" aria-hidden="true" class="css-snhnyn">
+                                <span data-testid="DownIcon" aria-hidden="true" className="css-snhnyn">
                                     <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path>
                                     </svg>
                                 </span>
@@ -30,7 +54,7 @@ function Dashboard() {
                         <button className="flex items-center p-2 gap-2 header-btn" type="button" data-testid="recents-switcher" aria-haspopup="true" aria-expanded="false" title="recents" aria-label="recents">
                             <span className="">Recents</span>
                             <span className="">
-                                <span data-testid="DownIcon" aria-hidden="true" class="css-snhnyn">
+                                <span data-testid="DownIcon" aria-hidden="true" className="css-snhnyn">
                                     <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path>
                                     </svg>
                                 </span>
@@ -39,7 +63,7 @@ function Dashboard() {
                         <button className="flex items-center p-2 gap-2 header-btn" type="button" data-testid="starred-switcher" aria-haspopup="true" aria-expanded="false" title="starred" aria-label="starred">
                             <span className="">Starred</span>
                             <span className="">
-                                <span data-testid="DownIcon" aria-hidden="true" class="css-snhnyn">
+                                <span data-testid="DownIcon" aria-hidden="true" className="css-snhnyn">
                                     <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path>
                                     </svg>
                                 </span>
@@ -48,14 +72,14 @@ function Dashboard() {
                         <button className="flex items-center p-2 gap-2 header-btn" type="button" data-testid="templates-switcher" aria-haspopup="true" aria-expanded="false" title="templates" aria-label="templates">
                             <span className="">Templates</span>
                             <span className="">
-                                <span data-testid="DownIcon" aria-hidden="true" class="css-snhnyn">
+                                <span data-testid="DownIcon" aria-hidden="true" className="css-snhnyn">
                                     <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.2929 16.7071L4.22185 9.63606C3.83132 9.24554 3.83132 8.61237 4.22185 8.22185C4.61237 7.83133 5.24554 7.83133 5.63606 8.22185L12 14.5858L18.364 8.22185C18.7545 7.83132 19.3877 7.83132 19.7782 8.22185C20.1687 8.61237 20.1687 9.24554 19.7782 9.63606L12.7071 16.7071C12.3166 17.0977 11.6834 17.0977 11.2929 16.7071Z" fill="currentColor"></path>
                                     </svg>
                                 </span>
                             </span>
                         </button>
                         <div className='mx-1'>
-                            <button className='bg-blue-600 p-2 rounded'>
+                            <button className='bg-blue-600 p-2 rounded' onClick={()=>handleLogout()}>
                                 <p className='text-white px-2'>Create</p>
                             </button>
                         </div>
@@ -68,13 +92,13 @@ function Dashboard() {
                     </div>
                     <div className='flex items-center'>
                         <div className='header-icons rotate-45'>
-                            <IoMdNotificationsOutline  size={25}/>
+                            <IoMdNotificationsOutline size={25} />
                             <div className='absolute bottom-5 bg-orange-600 w-6 h-6 rounded-xl flex items-center justify-center rotate-315'>
                                 <span className='text-sm font-medium text-white'>3</span>
                             </div>
                         </div>
                         <div className='header-icons'>
-                            <AiOutlineQuestionCircle  size={25}/>
+                            <AiOutlineQuestionCircle size={25} />
                         </div>
                         <div className='header-icons'>
                             <div className='bg-orange-600 w-8 h-8 rounded-2xl flex items-center justify-center'>
