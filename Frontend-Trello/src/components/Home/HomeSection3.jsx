@@ -8,9 +8,9 @@ import Search_Value from "../../images/Search_Value.svg";
 function HomeSection3() {
   return (
     <div>
-      <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center p-10  ">
-        <div className="flex  gap-3 justify-between ">
-          <div className=" flex left-0">
+      <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center">
+        <div className="flex justify-between ">
+          <div className="flex left-0">
             <svg width="289" height="950" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#a)">
                 <g opacity="0.2" fill="#fff">
@@ -178,20 +178,19 @@ function HomeSection3() {
           </div>
         </div>
       </section>
-      <div className="w-screen min-h-20 "></div>
-      <div className="w-screen  h-52 flex flex-col gap-4 pl-12  py-2 my-10 ml-44 ">
-        <div className="flex  mt-20  items-center">
-          <p className=" font-medium text-sm">POWERFUL WAYS TO GROW</p>
+
+      <div className="w-full flex gap-4 py-2 my-10">
+        <div className="flex flex-col ml-40">
+          <p className="text-base font-bold my-4">POWERFUL WAYS TO GROW</p>
+          <h1 className="text-4xl font-bold mb-4">Do more with Trello</h1>
+          <p className="mb-4 text-2xl">
+            {"Trello’s"} intuitive features give any team the ability to quickly
+            set up <br /> and customize workflows for just about anything.
+          </p>
         </div>
-        <h1 className="text-3xl font-bold">Do more with Trello</h1>
-        <p className=" font-medium">
-          {"Trello’s"} intuitive features give any team the ability to quickly
-          set up <br /> and customize workflows for just about anything.
-        </p>
       </div>
-      {/* card */}
-      <div className=" flex p-4 px-20 m-10  items-center justify-evenly ">
-        {/* card 1 */}
+      {/* cards */}
+      <div className=" flex items-center justify-evenly ">
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
           <figure>
             <img
@@ -213,7 +212,6 @@ function HomeSection3() {
             </div>
           </div>
         </div>
-        {/* card 2 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md ">
           <figure>
             <img
@@ -235,7 +233,6 @@ function HomeSection3() {
             </div>
           </div>
         </div>
-        {/* card 3 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
           <figure>
             <img
