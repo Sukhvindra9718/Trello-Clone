@@ -17,9 +17,8 @@ function App() {
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
         </Route>
-        
+        <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/task-management" element={<TaskManagement />} />
         <Route path="/not-found" element={<NotFound />} />
