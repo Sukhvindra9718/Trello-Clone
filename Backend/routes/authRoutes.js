@@ -59,4 +59,11 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.post('/logout', async (req, res) => {
+    try {
+        res.header('auth-token', '').send({ success: true });
+    } catch (err) {
+        res.status(400).send({ message: err.message,success:false });
+    }
+})
 module.exports = router;

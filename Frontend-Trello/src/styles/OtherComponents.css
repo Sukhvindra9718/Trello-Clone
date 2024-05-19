@@ -1,0 +1,73 @@
+/* Styles for dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Styles for dropdown input */
+.dropdown-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* Styles for dropdown list */
+.dropdownList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+    display: block;
+    border-radius: 8px;
+    z-index: 10;
+}
+.dropdownList li:hover,
+.dropdownList li:focus {
+    background-color: #f8f8f8;
+}
+.dropdownList li:first-child:hover,
+.dropdownList li:first-child:focus {
+    background-color: #f8f8f8;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.dropdownList li:last-child:hover,
+.dropdownList li:last-child:focus {
+    background-color: #f8f8f8;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+/* Styles for dropdown list items */
+.dropdownList li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Show dropdown list when input is focused */
+/* .dropdown-input:focus+.dropdownList {
+    display: block;
+} */
+.dropdown-icon{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+
