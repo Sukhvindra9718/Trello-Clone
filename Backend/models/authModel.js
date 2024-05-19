@@ -23,6 +23,10 @@ const authSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    workspaces:{
+        type: Array,
+        default: []
+    },
     boards: {
         type: Array,
         default: []

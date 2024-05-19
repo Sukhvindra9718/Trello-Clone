@@ -9,7 +9,7 @@ const authRoute = require('./routes/authRoutes');
 // const cardRoute = require('./routes/card');
 // const { verifyToken } = require('./middleware/verifyToken');
 
-dotenv.config();
+dotenv.config({ path: './Backend/.env.development.local' });
 
 
 // Connect to DB
@@ -37,6 +37,7 @@ app.use((err, req, res, next) => {
 // Event listener for uncaught exceptions
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
+  process.exit(1); // exit with failure
   // Optionally, you can perform additional cleanup or logging here
 });
 
@@ -54,9 +55,9 @@ process.on('unhandledRejection', (err) => {
 
 if(process.env.NODE_ENV === 'production') {
   const path = require('path');
-  app.use(express.static(path.resolve(__dirname, '../build')));
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+  app.use(express.static(path.resolve(__dirname, '../Frontend-Trello/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../Frontend-Trello/dist', 'index.html'));
   });
 }else{
   app.get('/', (req, res) => {
