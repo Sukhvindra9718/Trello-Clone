@@ -88,3 +88,69 @@
     background-color: #DCDFE4;
     border-radius: 50%;
 }
+
+.dashboard-sidebar{
+    width:20%;
+}
+.dashboard-main{
+    width: 70%;
+}
+
+.tab-active{
+    background-color: #E9F2FF;;
+    border-radius: 3px;
+    padding: 10px 8px;
+    margin: 4px 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #0C66E4;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+    width: 90%;
+}
+.tab-non-active{
+    background-color: #FFF;;
+    border-radius: 3px;
+    padding: 10px 8px;
+    margin: 4px 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #172b4d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+    width: 90%;
+}
+
+.tab-non-active:hover{
+    background-color: #DCDFE4;
+}
+
+.workspace-item{
+    padding: 0.5rem;
+}
+.workspace-item p{
+    color: #172b4d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+.workspace-item:hover{
+    background-color: #DCDFE4;
+    height: 100%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+}
