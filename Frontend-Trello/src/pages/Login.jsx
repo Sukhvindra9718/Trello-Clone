@@ -50,7 +50,7 @@ function Login() {
           <p>One account for Trello, Jira, Confluence and more.</p>
           <p>Privacy Policy</p><p class="css-1x34ed1">•</p>
           <p>User Notice</p>
-          <p>This site is protected by reCAPTCHA and the Google <Link className='link'>Privacy Policy</Link> and <Link className='link'>Terms of Service</Link> apply.</p>
+          <p>This site is protected by reCAPTCHA and the Google </p> <p> <Link className='link'>Privacy Policy</Link> and <Link className='link'>Terms of Service</Link> apply.</p>
         </div>
         </div>
       </div>
