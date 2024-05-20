@@ -1,4 +1,5 @@
 .background{
+    overflow: hidden;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -8,7 +9,8 @@
     z-index: -1;
 }
 .section_Login{
-    height: 100vh;
+    overflow:hidden;
+    height: 95vh;
     width: 100vw;
     display: flex;
     flex-wrap: nowrap;
@@ -16,17 +18,18 @@
     align-content: center;
 }
 .item_holders{
-    position: relative;
-    top: 71px;
+   position: relative;
+    top: 59px;
     background-color: white;
     box-shadow: -1px -2px 20px rgb(211, 207, 207);
-    height: 90vh;
+    height: 95vh;
     width: 25vw;
     display: grid;
     justify-items: center;
-    align-items: center;
+    align-items: initial;
     grid-template-columns: 100% ;
-    grid-template-rows: 15% 20% 25%;
+    grid-template-rows: 7% 15% 35% 25%;
+    gap: 40px;
 }
 .logo{
 display: grid;
@@ -35,14 +38,95 @@ justify-items: center;
 align-items: center;
 }
 .logo img{
+position: relative;
+top: 0px;
 height: 35%;
 }
 .input{
+    display: flex;;
+    align-content:flex-start;
     width: 80%;
     display: grid;
     grid-row: 2;
     gap: 10px;
 }
+.input p{
+    font-size: 14px;
+    font-weight: 700;
+}
 .input input ,.input button{
 height: 2.5rem;
 }
+.orContinueWith{
+    display: grid;
+    gap: 15px;
+    width: 80%;
+    grid-auto-rows: 3;
+}
+.orContinueWith >p{
+    color: rgb(94, 108, 132);
+    font-size: 14px;
+    text-align: center;
+}
+.icons{
+    height: 40px;
+    border: 1px solid rgb(193, 199, 208);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 10px;
+}
+.icons p{
+font-weight: 700;
+}
+.creatAnAcount{
+    height: 40px;
+     color:  var(--ds-link, #0052cc);
+     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 1px solid rgb(193, 199, 208); ;
+}
+.footer{
+    height: 100%;
+    width: 100%;
+    grid-row: 4;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: 30% 70%;
+}
+.footer .logos{
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    gap: 10px;
+}
+.footer .logos h5{
+    color:rgb(94, 108, 132); ;
+    font-weight: 700;
+}
+.color{
+    color:rgb(94, 108, 132);;
+}
+.footerText{
+    grid-template-rows: 2;
+    width: 72%;
+    height: 88px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.footerText p{
+    height: 5px;
+font-size: x-small;
+}
+.footerText .link{
+    color: #0052cc;
+}
+
