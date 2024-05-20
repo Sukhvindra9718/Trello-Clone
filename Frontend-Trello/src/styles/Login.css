@@ -5,12 +5,12 @@
     width: 100vw;
     background-image: url('..\images\Screenshot 2024-05-19 221019.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     z-index: -1;
 }
 .section_Login{
     overflow:hidden;
-    height: 95vh;
+    height: 98vh;
     width: 100vw;
     display: flex;
     flex-wrap: nowrap;
@@ -121,9 +121,11 @@ font-weight: 700;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
+    top: 10px;
 }
 .footerText p{
-    height: 5px;
+line-height: 10px;
 font-size: x-small;
 }
 .footerText .link{
