@@ -37,7 +37,7 @@ function Login() {
 </svg> <p>Slack</p>
           </div>
           <div className='creatAnAcount'>
-            <Link>Can't Login?</Link>
+            <Link to="can'tlogin">Can't Login?</Link>
             <p class="css-1x34ed1">•</p>
             <Link to="singup">Creat an account</Link>
           </div>
