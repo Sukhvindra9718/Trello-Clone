@@ -46,7 +46,7 @@ function Header() {
       </nav>
       {/* login part */}
       <div className='col-start-2 flex flex-wrap justify-end items-center text-xl'>
-        <p className='block relative right-36'>Log in</p> 
+        <Link to="/login" className=' block relative right-36'>Log in</Link> 
         <Link to="#">
           <button style={{backgroundColor:"rgb(0 128 255)"}} className='text-white h-14 w-44 relative right-32 '>
             Get Trello for free

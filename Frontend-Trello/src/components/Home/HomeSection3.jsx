@@ -11,7 +11,7 @@ function HomeSection3() {
       <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center">
         <div className="flex justify-between ">
           <div className="flex left-0">
-            <svg width="289" height="950" xmlns="http://www.w3.org/2000/svg">
+            <svg width="100%" height="950" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#a)">
                 <g opacity="0.2" fill="#fff">
                   <path fillOpacity="0.01" d="M17 717h80v80H17z" />
