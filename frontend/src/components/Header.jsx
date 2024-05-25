@@ -13,11 +13,11 @@ function Header() {
       </div>
         <div className='navbar'>
         <ul className='flex gap-10'>
-          <li>Features <span style={{position:'absolute'}} class="material-symbols-outlined">stat_minus_1</span></li>
-          <li>Solutions <span style={{position:'absolute'}} class="material-symbols-outlined">stat_minus_1</span></li>
-          <li>Plans <span style={{position:'absolute'}} class="material-symbols-outlined">stat_minus_1</span></li>
-          <li>Pricing <span style={{position:'absolute'}} class="material-symbols-outlined">stat_minus_1</span></li>
-          <li>Resources <span style={{position:'absolute'}} class="material-symbols-outlined">stat_minus_1</span></li>
+          <li>Features <span style={{position:'absolute'}} className="material-symbols-outlined">stat_minus_1</span></li>
+          <li>Solutions <span style={{position:'absolute'}} className="material-symbols-outlined">stat_minus_1</span></li>
+          <li>Plans <span style={{position:'absolute'}} className="material-symbols-outlined">stat_minus_1</span></li>
+          <li>Pricing <span style={{position:'absolute'}} className="material-symbols-outlined">stat_minus_1</span></li>
+          <li>Resources <span style={{position:'absolute'}} className="material-symbols-outlined">stat_minus_1</span></li>
     </ul>
         </div>
       </section>
