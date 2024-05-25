@@ -72,7 +72,7 @@ function HomeSection3() {
             </div>
             <div className=" w-[1100px] h-[360px] flex gap-5 rounded-lg bg-white p-4">
               <div>
-                <img src={Trello} className="w-[555px] h-[300px]" alt="" />
+                <img src=/*{Trello}*/"https://i.postimg.cc/sgg4KxM7/Trello-Board-Timeline-2x.webp" className="w-[555px] h-[300px]" alt="" />
               </div>
               <div className="w-1/2  flex flex-col gap-2 items-center justify-center px-2">
                 <div className="flex self-start  ">
@@ -129,7 +129,7 @@ function HomeSection3() {
               </div>
               <div>
                 <img
-                  src={TrelloCalender}
+                  src=/*{TrelloCalender}*/"https://i.postimg.cc/jdXhzPSR/Trello-Calendar.webp"
                   className="w-[555px] h-[300px]"
                   alt=""
                 />
