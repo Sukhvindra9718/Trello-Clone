@@ -11,7 +11,6 @@ import ServerError from './pages/ServerError.jsx';
 import Unauthorized from './pages/Unauthorized.jsx';
 import TaskManagement from './pages/TaskManagement.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import CantLogin from './pages/CantLogin.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +21,6 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/login/singup" element={<SingUp/>}/>
-        <Route path="/login/can'tlogin" element={<CantLogin />}></Route>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/task-management" element={<TaskManagement />} />
         <Route path="/not-found" element={<NotFound />} />
