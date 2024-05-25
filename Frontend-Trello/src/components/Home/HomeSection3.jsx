@@ -4,7 +4,6 @@ import TrelloCalender from "../../images/Trello_Calendar.png";
 import Integrations_Puzzle from "../../images/Integrations_Puzzle.svg";
 import Gears from "../../images/Gears.svg";
 import Search_Value from "../../images/Search_Value.svg";
-import Carousel from "../Home/Carousel";
 
 function HomeSection3() {
   return (
@@ -60,10 +59,10 @@ function HomeSection3() {
                 View your team’s projects from every angle and bring a fresh
                 perspective <br /> to the task at hand.
               </p>
-              <div className="w-[225px] max-h-[45px] mt-4      ">
+              <div className="w-[225px] max-h-[45px]     ">
                 <a
                   href="# "
-                  className="text-[#172B4D] p-3  bg-white rounded-lg hover:bg-slate-200  focus:outline-none"
+                  className="text-[#172B4D] p-2 bg-white hover:bg-slate-200  focus:outline-none"
                 >
                   <span className="w-[181px] h-[24px] text-sm  tracking-tighter font-light >">
                     Discover all Trello views
@@ -257,18 +256,7 @@ function HomeSection3() {
         </div>
       </div>
       {/* carousel */}
-
-      <div
-        style={{
-          background:
-            "linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) no-repeat scroll padding-box border-box transparent",
-          backgroundBlendMode: "normal",
-        }}
-        className="flex justify-center "
-      >
-        {" "}
-        <Carousel />
-      </div>
+      <div className=" px-60"></div>
     </div>
   );
 }

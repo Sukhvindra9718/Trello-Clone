@@ -5,14 +5,10 @@ import HomeSection2 from "../components/Home/HomeSection2";
 import HomeSection3 from "../components/Home/HomeSection3";
 import HomeSection4 from "../components/Home/HomeSection4";
 
-
 function Home() {
   return (
     <div className="section-1">
-<<<<<<< HEAD:Frontend-Trello/src/pages/Home.jsx
-=======
-  
->>>>>>> vishal:frontend/src/pages/Home.jsx
+
       <HomeSection1 />
       <HomeSection2 />
       <HomeSection3 />

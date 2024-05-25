@@ -10,7 +10,7 @@ function Footer() {
     <footer>
       <div className='footer-top-container'>
         <div>
-          <img className="h-7" src={FooterLogo} alt=""></img>
+          <img class="h-7" src={FooterLogo} alt=""></img>
         </div>
         <div>
           <h1>About Trello</h1>
