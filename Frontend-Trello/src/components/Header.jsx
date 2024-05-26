@@ -18,8 +18,7 @@ function Header() {
         <ul className=' col-start-1 col-end-2   h-14 flex flex-wrap items-center justify-start list-none text-base gap-10 '>
           {/* logo part */}
         <div className='h-12 flex flex-wrap content-center w-28  relative left-24'>
-            <h1 className='relative text-blue-700 text-xs font-bold top-1 left-8'>ATLASSIAN</h1>
-            <img src="https://media.discordapp.net/attachments/1238139567845015644/1239585010336661595/Trello_logo.svg.png?ex=66441dc0&is=6642cc40&hm=13028fe06b250a510173d7fc7d16300c06573f871f1a90f5f608bb995b6a2b7d&=&format=webp&quality=lossless&width=1440&height=411" className=' relative h-8' alt="" />
+            <img src="trello.svg" className=' relative h-8' alt="" />
            </div>
             <li className='relative left-20' >
               <NavLink  className={`${features ? "text-blue-700 border-blue-700 border-b-2 transition- duration-1000 ":"text-black" }h-14 flex flex-wrap items-center justify-center `} to="#"  onClick={()=>{setFeatures((features)=>!features)}} >
