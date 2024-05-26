@@ -12,7 +12,7 @@ function Home() {
       <HomeSection2 />
       <HomeSection3 />
       <HomeSection4 />
-    </div>
+      </div>
   );
 }
 

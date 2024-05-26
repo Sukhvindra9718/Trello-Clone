@@ -11,8 +11,8 @@ function Header() {
   const [plans,setPlans]=useState(false);
   const [resources,setResources]=useState(false);
   return (
-    <header className='w-full h-28 grid grid-rows-[50%_50%] border-red border-2'>
-    <div className={` ${features ?" shadow-md shadow-black-200 duration-700":"hover:shadow-md shadow-black duration-700" } z-10 w-full grid  grid-cols-[60%_40%] col-span-full bg-white   fixed`}>
+    <header className='w-full h-28 grid grid-rows-[50%_50%] border-red border-20'>
+    <div className={` ${features ?" fixed shadow-md shadow-black-200 duration-700":"hover:shadow-md shadow-black duration-700" } z-20 w-full grid  grid-cols-[60%_40%] col-span-full bg-white   fixed`}>
       {/* navbar */}
       <nav className=''>
         <ul className=' col-start-1 col-end-2   h-14 flex flex-wrap items-center justify-start list-none text-base gap-10 '>
