@@ -1,4 +1,3 @@
-import React from 'react'
 import FooterLogo from '../images/FooterLogo.svg'
 import BrowserLogo from '../images/browser-47.svg'
 import '../styles/Footer.css'
