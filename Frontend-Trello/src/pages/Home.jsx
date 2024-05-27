@@ -10,7 +10,7 @@ function Home() {
     <div className="section-1">
 
       <HomeSection1 />
-      <HomeSection2 />
+      {/* <HomeSection2 /> */}
       <HomeSection3 />
       <HomeSection4 />
     </div>
