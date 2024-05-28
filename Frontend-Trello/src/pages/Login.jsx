@@ -5,6 +5,28 @@ import { DiApple } from "react-icons/di";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
 function Login() {
+  const [email,setEmail] = useState('')
+
+  const handleLogin = () => {
+    const url = 'http://192.168.120.79:5000/api/user/login'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({email:email})
+    }).then(async (res) => {
+      const data = await res.json();
+
+      if (data.success) {
+        navigate('/dashboard');
+      } else {
+        navigate('/server-error')
+      }
+    })
+
+
+  }
   return (
     <>
       <section className="background"></section>
@@ -26,6 +48,7 @@ function Login() {
             <button
               style={{ backgroundColor: "rgb(0 128 255)" }}
               className="text-white w-full"
+              onClick={()=>handleLogin()}
             >
               Continue
             </button>
