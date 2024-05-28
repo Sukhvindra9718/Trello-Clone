@@ -2,8 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    html  {
-        overflow-x: hidden;
-    }
+html {
+    overflow-x: hidden;
+}
+
+.hover-underline-animation {
+    /* display: inline-block; */
+    position: relative;
+}
+
+.hover-underline-animation.active {
+    color: #0087ca;
+}
+.hover-underline-animation::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    color: #0087ca;
 }
