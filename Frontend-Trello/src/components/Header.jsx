@@ -100,8 +100,5 @@ function Features() {
   return <div>Hello De</div>;
 }
 
-function Features() {
-  return <div>Hello De</div>;
-}
 
 export default Navbar;
