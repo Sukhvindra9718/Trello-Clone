@@ -4,14 +4,15 @@ import TrelloCalender from "../../images/Trello_Calendar.png";
 import Integrations_Puzzle from "../../images/Integrations_Puzzle.svg";
 import Gears from "../../images/Gears.svg";
 import Search_Value from "../../images/Search_Value.svg";
+import Carousel from "../Home/Carousel";
 
 function HomeSection3() {
   return (
     <div>
-      <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center">
-        <div className="flex justify-between ">
-          <div className="flex left-0">
-            <svg width="100%" height="950" xmlns="http://www.w3.org/2000/svg">
+      <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center p-10  ">
+        <div className="flex  gap-3 justify-between ">
+          <div className=" flex left-0">
+            <svg width="289" height="950" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#a)">
                 <g opacity="0.2" fill="#fff">
                   <path fillOpacity="0.01" d="M17 717h80v80H17z" />
@@ -59,10 +60,10 @@ function HomeSection3() {
                 View your team’s projects from every angle and bring a fresh
                 perspective <br /> to the task at hand.
               </p>
-              <div className="w-[225px] max-h-[45px]     ">
+              <div className="w-[225px] max-h-[45px] mt-4      ">
                 <a
                   href="# "
-                  className="text-[#172B4D] p-2 bg-white hover:bg-slate-200  focus:outline-none"
+                  className="text-[#172B4D] p-3  bg-white rounded-lg hover:bg-slate-200  focus:outline-none"
                 >
                   <span className="w-[181px] h-[24px] text-sm  tracking-tighter font-light >">
                     Discover all Trello views
@@ -72,7 +73,7 @@ function HomeSection3() {
             </div>
             <div className=" w-[1100px] h-[360px] flex gap-5 rounded-lg bg-white p-4">
               <div>
-                <img src={Trello} className="w-[555px] h-[300px]" alt="" />
+                <img src=/*{Trello}*/"https://i.postimg.cc/sgg4KxM7/Trello-Board-Timeline-2x.webp" className="w-[555px] h-[300px]" alt="" />
               </div>
               <div className="w-1/2  flex flex-col gap-2 items-center justify-center px-2">
                 <div className="flex self-start  ">
@@ -129,7 +130,7 @@ function HomeSection3() {
               </div>
               <div>
                 <img
-                  src={TrelloCalender}
+                  src=/*{TrelloCalender}*/"https://i.postimg.cc/jdXhzPSR/Trello-Calendar.webp"
                   className="w-[555px] h-[300px]"
                   alt=""
                 />
@@ -178,19 +179,20 @@ function HomeSection3() {
           </div>
         </div>
       </section>
-
-      <div className="w-full flex gap-4 py-2 my-10">
-        <div className="flex flex-col ml-40">
-          <p className="text-base font-bold my-4">POWERFUL WAYS TO GROW</p>
-          <h1 className="text-4xl font-bold mb-4">Do more with Trello</h1>
-          <p className="mb-4 text-2xl">
-            {"Trello’s"} intuitive features give any team the ability to quickly
-            set up <br /> and customize workflows for just about anything.
-          </p>
+      <div className="w-screen min-h-20 "></div>
+      <div className="w-screen  h-52 flex flex-col gap-4 pl-12  py-2 my-10 ml-44 ">
+        <div className="flex  mt-20  items-center">
+          <p className=" font-medium text-sm">POWERFUL WAYS TO GROW</p>
         </div>
+        <h1 className="text-3xl font-bold">Do more with Trello</h1>
+        <p className=" font-medium">
+          {"Trello’s"} intuitive features give any team the ability to quickly
+          set up <br /> and customize workflows for just about anything.
+        </p>
       </div>
-      {/* cards */}
-      <div className=" flex items-center justify-evenly ">
+      {/* card */}
+      <div className=" flex p-4 px-20 m-10  items-center justify-evenly ">
+        {/* card 1 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
           <figure>
             <img
@@ -212,6 +214,7 @@ function HomeSection3() {
             </div>
           </div>
         </div>
+        {/* card 2 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md ">
           <figure>
             <img
@@ -233,6 +236,7 @@ function HomeSection3() {
             </div>
           </div>
         </div>
+        {/* card 3 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
           <figure>
             <img
@@ -256,7 +260,17 @@ function HomeSection3() {
         </div>
       </div>
       {/* carousel */}
-      <div className=" px-60"></div>
+
+      <div
+        style={{
+          background:
+            "linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) no-repeat scroll padding-box border-box transparent",
+          backgroundBlendMode: "normal",
+        }}
+        className="flex justify-center "
+      >
+        <Carousel />
+      </div>
     </div>
   );
 }
