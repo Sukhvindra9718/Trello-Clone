@@ -18,14 +18,15 @@ function Signup4() {
     const { state } = useLocation();
 
     const handleSignUpProcess = () => {
-        const newCards = cards.forEach((list, index) => {
+        const newCards = ["",""]
+        cards.forEach((list, index) => {
             if (list === "") {
-                cards[index] = ["Project Planning", "Kickoff meeting"][index];
+                newCards[index] = ["Project Planning", "Kickoff meeting"][index];
             } else {
-                cards[index] = list;
+                newCards[index] = list;
             }
         });
-        navigate("/signup/signup5", { state: { email: state.email, goal: state.goal, board: state.board, list: state.list, cards: newCards,listIndex :0} });
+        navigate("/signup/signup5", { state: { email: state.email, goal: state.goal, board: state.board, list: state.list, cards: newCards} });
     };
 
     console.log(state)
@@ -42,7 +43,7 @@ function Signup4() {
                     </div>
                     <div style={{ width: "60%", marginTop: "1rem" }}>
                         {cards.map((list, index) => (
-                            <>
+                            <div key={index}>
                                 <label htmlFor="boardname">Card name {index+1}</label>
                                 <input
                                     key={index}
@@ -52,7 +53,7 @@ function Signup4() {
                                     value={list}
                                     onChange={(e) => handleInputChange(index, e)}
                                 />
-                            </>
+                            </div>
                         ))}
                     </div>
                     <div style={{ width: "60%" }} className='flex gap-3 items-center'>

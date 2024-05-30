@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authRoute = require('./routes/userRoutes');
+const userRoute = require('./routes/userRoutes');
 const errorMiddleware = require("./middleware/error")
 
 dotenv.config({ path: './Backend/.env.development.local' });
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 // Route Middleware
-app.use('/api/user', authRoute);
+app.use('/api/v1', userRoute);
 
 
 // Error handling middleware

@@ -13,26 +13,21 @@ exports.verifyEmail = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findOne({ email });
 
   if (user) {
-    res.status(200).json({success: true});
+    res.status(200).json({ success: true });
   } else {
-    res.status(200).json({success: false});
+    res.status(200).json({ success: false });
   }
 });
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const { name, email, password } = req.body;
+  console.log(req.body)
 
-  const user = await User.create({
-    name,
-    email,
-    password,
-    avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
-    },
+  res.status(200).json({
+    success: true,
+    message: "Register User",
   });
-  sendToken(user, 201, res);
+  // sendToken(user, 201, res);
 });
 
 // Login User
