@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 const app = express();
-dotenv.config({ path: '.env.development.local' });
+dotenv.config({ path: '../.env.development.local' });
 
 app.use(bodyParser.json());
 app.use(express.static('public'));

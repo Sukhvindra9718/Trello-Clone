@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/userRoutes');
 const errorMiddleware = require("./middleware/error")
 
-dotenv.config({ path: './Backend/.env.development.local' });
+dotenv.config({ path: '.env.development.local' });
 
 
 // Connect to DB
