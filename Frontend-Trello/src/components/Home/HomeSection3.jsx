@@ -1,17 +1,17 @@
-import React from "react";
 import Trello from "../../images/TrelloBoard_Timeline_2x.png";
 import TrelloCalender from "../../images/Trello_Calendar.png";
 import Integrations_Puzzle from "../../images/Integrations_Puzzle.svg";
 import Gears from "../../images/Gears.svg";
 import Search_Value from "../../images/Search_Value.svg";
+import Carousel from "../Home/Carousel";
 
 function HomeSection3() {
   return (
     <div>
-      <section className="w-full max-h-[980px] flex flex-col bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center">
-        <div className="flex justify-between ">
-          <div className="flex left-0">
-            <svg width="100%" height="950" xmlns="http://www.w3.org/2000/svg">
+      <section className="w-full max-h-[980px] flex flex-col  bg-gradient-to-bl from-[#1fc1da] to-indigo-600 text-center p-10  ">
+        <div className="flex  gap-3 justify-center  ">
+          <div className=" flex absolute left-6">
+            <svg width="289" height="950" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#a)">
                 <g opacity="0.2" fill="#fff">
                   <path fillOpacity="0.01" d="M17 717h80v80H17z" />
@@ -50,8 +50,8 @@ function HomeSection3() {
               </defs>
             </svg>
           </div>
-          <div className="flex flex-col items-center h-full gap-16 ">
-            <div className="  flex flex-col items-center   ">
+          <div className="flex flex-col items-center h-full gap-16  ">
+            <div className="  flex flex-col items-center    ">
               <h1 className="text-white text-3xl my-2 font-semibold">
                 See work in a whole new way
               </h1>
@@ -59,10 +59,10 @@ function HomeSection3() {
                 View your team’s projects from every angle and bring a fresh
                 perspective <br /> to the task at hand.
               </p>
-              <div className="w-[225px] max-h-[45px]     ">
+              <div className="w-[225px] max-h-[45px] mt-4      ">
                 <a
                   href="# "
-                  className="text-[#172B4D] p-2 bg-white hover:bg-slate-200  focus:outline-none"
+                  className="text-[#172B4D] p-3  bg-white rounded-lg hover:bg-slate-200  focus:outline-none"
                 >
                   <span className="w-[181px] h-[24px] text-sm  tracking-tighter font-light >">
                     Discover all Trello views
@@ -72,10 +72,14 @@ function HomeSection3() {
             </div>
             <div className=" w-[1100px] h-[360px] flex gap-5 rounded-lg bg-white p-4">
               <div>
-                <img src=/*{Trello}*/"https://i.postimg.cc/sgg4KxM7/Trello-Board-Timeline-2x.webp" className="w-[555px] h-[300px]" alt="" />
+                <img
+                  src=/*{Trello}*/ "https://i.postimg.cc/sgg4KxM7/Trello-Board-Timeline-2x.webp"
+                  className="w-[555px] h-[300px]"
+                  alt=""
+                />
               </div>
               <div className="w-1/2  flex flex-col gap-2 items-center justify-center px-2">
-                <div className="flex self-start  ">
+                <div className="flex self-start ">
                   <svg
                     className="w-6 h-6 mt-[2px] text-[#8778D9]"
                     fill="currentColor"
@@ -103,12 +107,12 @@ function HomeSection3() {
             {/* 2part */}
             <div className=" w-[1100px] h-[360px] flex gap-5  rounded-lg bg-slate-50 p-4  shadow-2xl border-slate-900">
               <div className="w-1/2  flex flex-col gap-2 items-center justify-center px-2 ">
-                <div className="flex self-start  ">
+                <div className="flex self-start   ">
                   <svg
                     fill="currentColor"
                     aria-hidden="true"
                     viewBox="0 0 32 32"
-                    className="w-6 h-6 my-[2px] -mt-0.5 text-[#00C7E5]"
+                    className="w-6 h-6 my-[2px] -mt-0.5 text-[#00C7E5] absolute left-0"
                   >
                     <path d="M6.66 6.667h18.68A2.66 2.66 0 0 1 28 9.325v16.016A2.659 2.659 0 0 1 25.34 28H6.66A2.66 2.66 0 0 1 4 25.341V9.325a2.659 2.659 0 0 1 2.66-2.658ZM6.667 12v12A1.333 1.333 0 0 0 8 25.333h16A1.333 1.333 0 0 0 25.333 24V12H6.667ZM8 5.333a1.333 1.333 0 0 1 2.667 0v1.334H8V5.333Zm13.333 0a1.333 1.333 0 0 1 2.667 0v1.334h-2.667V5.333Zm-12 12v-2.668H12v2.668H9.333Zm10.667 0v-2.668h2.667v2.668H20Zm-5.333 0v-2.668h2.668v2.668h-2.668Zm-5.334 5.334V20H12v2.667H9.333Zm5.334 0V20h2.668v2.667h-2.668Zm5.333 0V20h2.667v2.667H20Z"></path>
                   </svg>
@@ -129,14 +133,14 @@ function HomeSection3() {
               </div>
               <div>
                 <img
-                  src=/*{TrelloCalender}*/"https://i.postimg.cc/jdXhzPSR/Trello-Calendar.webp"
+                  src=/*{TrelloCalender}*/ "https://i.postimg.cc/jdXhzPSR/Trello-Calendar.webp"
                   className="w-[555px] h-[300px]"
                   alt=""
                 />
               </div>
             </div>
           </div>
-          <div className="flex    right-0">
+          <div className="flex  absolute right-6   ">
             <svg width="289" height="951" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <clipPath id="a">
@@ -178,19 +182,20 @@ function HomeSection3() {
           </div>
         </div>
       </section>
-
-      <div className="w-full flex gap-4 py-2 my-10">
-        <div className="flex flex-col ml-40">
-          <p className="text-base font-bold my-4">POWERFUL WAYS TO GROW</p>
-          <h1 className="text-4xl font-bold mb-4">Do more with Trello</h1>
-          <p className="mb-4 text-2xl">
-            {"Trello’s"} intuitive features give any team the ability to quickly
-            set up <br /> and customize workflows for just about anything.
-          </p>
+      <div className="w-full min-h-20  "></div>
+      <div className="   flex flex-col gap-4 pl-12  py-2 my-10 mx-44 ">
+        <div className="flex  mt-20  items-center">
+          <p className=" font-medium text-sm">POWERFUL WAYS TO GROW</p>
         </div>
+        <h1 className="text-3xl font-bold">Do more with Trello</h1>
+        <p className=" font-medium text-wrap">
+          {"Trello’s"} intuitive features give any team the ability to quickly
+          set up <br /> and customize workflows for just about anything.
+        </p>
       </div>
-      {/* cards */}
-      <div className=" flex items-center justify-evenly ">
+      {/* card */}
+      <div className=" flex p-4 px-20 m-10  items-center justify-evenly ">
+        {/* card 1 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
           <figure>
             <img
@@ -212,6 +217,7 @@ function HomeSection3() {
             </div>
           </div>
         </div>
+        {/* card 2 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md ">
           <figure>
             <img
@@ -233,6 +239,7 @@ function HomeSection3() {
             </div>
           </div>
         </div>
+        {/* card 3 */}
         <div className="card w-[350px] h-[380px] bg-slate-100 shadow-xl p-6 rounded-md">
           <figure>
             <img
@@ -256,7 +263,17 @@ function HomeSection3() {
         </div>
       </div>
       {/* carousel */}
-      <div className=" px-60"></div>
+
+      <div
+        style={{
+          background:
+            "linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) no-repeat scroll padding-box border-box transparent",
+          backgroundBlendMode: "normal",
+        }}
+        className="flex justify-center "
+      >
+        <Carousel />
+      </div>
     </div>
   );
 }
