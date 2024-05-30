@@ -1,6 +1,6 @@
 body {
   background-color: rgb(255, 255, 255);
-  color: rgb(9, 30, 66);
+  color: rgb(23, 43, 77);;
   margin: 0px;
   padding: 0px;
   /* overflow-x: hidden; */
@@ -12,5 +12,6 @@ body {
   font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
+
 
 
