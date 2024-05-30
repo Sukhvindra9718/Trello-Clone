@@ -3,11 +3,8 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authRoute = require('./routes/authRoutes');
-// const boardRoute = require('./routes/board');
-// const listRoute = require('./routes/list');
-// const cardRoute = require('./routes/card');
-// const { verifyToken } = require('./middleware/verifyToken');
+const authRoute = require('./routes/userRoutes');
+const errorMiddleware = require("./middleware/error")
 
 dotenv.config({ path: './Backend/.env.development.local' });
 
@@ -24,9 +21,7 @@ app.use(cors());
 
 // Route Middleware
 app.use('/api/user', authRoute);
-// app.use('/api/board', verifyToken, boardRoute);
-// app.use('/api/list', verifyToken, listRoute);
-// app.use('/api/card', verifyToken, cardRoute);
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -45,12 +40,6 @@ app.listen(5000, () => console.log('Server is running on port 5000'));
 
 process.on('unhandledRejection', (err) => {
   console.error('Unhandled Promise Rejection:', err);
-  // Optionally, you can perform additional cleanup or logging here
-  // handlePromise rejection(err); 
-
-  // If you don't handle the exception, the application will crash then give code
-  // process.exit(1);
-
 });
 
 if(process.env.NODE_ENV === 'production') {
@@ -72,3 +61,6 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
+
+// Middleware for error
+app.use(errorMiddleware);
