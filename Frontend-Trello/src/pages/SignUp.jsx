@@ -3,8 +3,10 @@ import { FaAtlassian } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
 import { Link } from 'react-router-dom';
-import '../styles/Singup.css'
-function SingUp() {
+import '../styles/Signup.css'
+
+
+function SignUp() {
   return (
     <>
     <section className='background'></section>
@@ -14,13 +16,13 @@ function SingUp() {
           <img src="https://media.discordapp.net/attachments/1238139567845015644/1239585010336661595/Trello_logo.svg.png?ex=66441dc0&is=6642cc40&hm=13028fe06b250a510173d7fc7d16300c06573f871f1a90f5f608bb995b6a2b7d&=&format=webp&quality=lossless&width=1440&height=411" alt="" />
         </div>
         <div className="input">
-          <p className='text-center w-full text-xl'>Sing up to continue</p>
-          <input type="email" className=' border-grey border-2' placeholder='Eneter your email' />
+          <h1 className='text-center w-full text-2xl font-semibold'>Sign up to continue</h1>
+          <input type="email" className=' border-grey border-2 pl-4' placeholder='Enter your email' />
           <p style={{fontWeight:"400", fontSize:"10px"}}>By signing up, I accept the Atlassian <Link className='text-blue-500'>Cloud Terms of Service </Link>and acknowledge the <Link className='text-blue-500'>Privacy Policy.</Link></p>
           <button style={{backgroundColor:"rgb(0 128 255)"}} className='text-white w-full'>Continue</button>
         </div>
         <div className='orContinueWith'>
-          <p>Or continue with</p>
+          <p className='mt-3'>Or continue with</p>
           <div className='icons'> 
           <FcGoogle size={25}/> <p>Google</p> 
           </div>
@@ -38,10 +40,10 @@ function SingUp() {
 </svg> <p>Slack</p>
           </div>
           <div className='creatAnAcount'>
-            <Link>Allready have an Atlassian account</Link>
+            <Link to="/login">Allready have an Atlassian account</Link>
           </div>
         </div>
-        <div className='footer'>
+        <div className='footer mt-4'>
           <div className="logos">
         <FaAtlassian size={20} className='color'/> <h5 className='text-end'>ATLASSIAN</h5>
         </div>
@@ -58,4 +60,4 @@ function SingUp() {
   )
 }
 
-export default SingUp
+export default SignUp
