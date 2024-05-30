@@ -1,77 +1,104 @@
-import React from 'react'
-import { useEffect,useState,useCallback } from 'react'
-import { Link,NavLink } from 'react-router-dom'
-import '../styles/Header.css'
-import '../components/PopUp.jsx'
-import PopUp from '../components/PopUp.jsx'
+"use client";
 
-function Header() {
-  const [features,setFeatures]=useState(false);
-  const [solutions,setSolutions]=useState(false);
-  const [plans,setPlans]=useState(false);
-  const [resources,setResources]=useState(false);
+import { Link } from "react-router-dom";
+import {  useState } from "react";
+import { FaAngleDown } from "react-icons/fa6";
+
+function Navbar() {
+  const [activeNavTab, setActiveNavTab] = useState(null);
+
+
+  const NavbarContent = {
+    ["Features"]: <Features />,
+  };
+
   return (
-    <header className='w-full h-28 grid grid-rows-[50%_50%] border-red border-2'>
-    <div className={` ${features ?" shadow-md shadow-black-200 duration-700":"hover:shadow-md shadow-black duration-700" } z-10 w-full grid  grid-cols-[60%_40%] col-span-full bg-white   fixed`}>
-      {/* navbar */}
-      <nav className=''>
-        <ul className=' col-start-1 col-end-2   h-14 flex flex-wrap items-center justify-start list-none text-base gap-10 '>
-          {/* logo part */}
-        <div className='h-12 flex flex-wrap content-center w-28  relative left-24'>
-            <h1 className='relative text-blue-700 text-xs font-bold top-1 left-8'>ATLASSIAN</h1>
-            <img src="https://media.discordapp.net/attachments/1238139567845015644/1239585010336661595/Trello_logo.svg.png?ex=66441dc0&is=6642cc40&hm=13028fe06b250a510173d7fc7d16300c06573f871f1a90f5f608bb995b6a2b7d&=&format=webp&quality=lossless&width=1440&height=411" className=' relative h-8' alt="" />
-           </div>
-            <li className='relative left-20' >
-              <NavLink  className={`${features ? "text-blue-700 border-blue-700 border-b-2 transition- duration-1000 ":"text-black" }h-14 flex flex-wrap items-center justify-center `} to="#"  onClick={()=>{setFeatures((features)=>!features)}} >
-                Features <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
-              </NavLink>  
-            </li>
-            <li className='relative left-20 hover:text-blue-500'>
-               <NavLink to="#"  className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}onClick={()=>{setSolutions((prev)=>!prev)}}>
-                Solutions   <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
-              </NavLink>
-              {/* <PopUp val2={solutions}/> */}
-            </li>
-            <li className='relative left-20 hover:text-blue-500'> <NavLink to="#" className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
-                Plans  <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
-              </NavLink>
-            </li>
-            <li className='relative left-20 hover:text-blue-500'>
-            <NavLink to="#" className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
-                Pricing   <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
-              </NavLink>
-            </li>
-            <li className='relative left-20 hover:text-blue-500'>
-            <NavLink to="#"  className={({isActive})=>`
-              {isActive ? "text-blue-700":"text-black"}  flex justify-center  hover:text-blue-500`}>
-                Resources   <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="16px" fill="#e8eae"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"/></svg>
-              </NavLink>
-            </li>
-        </ul>
-      </nav>
-      {/* login part */}
-      <div className='col-start-2 flex flex-wrap justify-end items-center text-xl'>
-        <Link to="/login" className=' block relative right-36'>Log in</Link> 
-        <Link to="#">
-          <button style={{backgroundColor:"rgb(0 128 255)"}} className='text-white h-14 w-44 relative right-32 '>
-            Get Trello for free
-          </button>
-        </Link>
+    <>
+      <div className="fixed z-[10000]">
+        <div className="flex justify-center h-[60px] w-screen bg-white relative z-[10000]">
+          <div className="flex items-center justify-between h-full w-[min(1320px,100vw)] ">
+            <div className="flex gap-5 h-full">
+              <Link href="" className="flex items-center h-full px-6 py-2">
+                <img
+                  src="trello.svg"
+                  width={100}
+                  height={100}
+                  alt="Atlassian Trello"
+                  className="h-full w-[125px]"
+                />
+              </Link>
+            </div>
+            <div className="hidden md:flex justify-between h-full w-full">
+              <ul className="flex gap-7 h-full">
+                {[
+                  { text: "Features" },
+                  { text: "Solutions" },
+                  { text: "Plans" },
+                  { text: "Pricing", href: "/pricing" },
+                  { text: "Resources" },
+                ].map((item) => (
+                  <li
+                    key={item.text}
+                    className={`flex items-center h-full hover:text-blue-500 transition-all duration-200 hover-underline-animation ${
+                      item.text === activeNavTab ? "active" : ""
+                    }`}
+                  >
+                    <button
+                      onClick={() => {
+                        if (item.href) {
+                          //
+                        } else {
+                          if (activeNavTab === item.text) {
+                            setActiveNavTab(null);
+                          } else {
+                            setActiveNavTab(item.text);
+                          }
+                        }
+                      }}
+                      className="flex items-center gap-2 text-sm "
+                    >
+                      {item.href ? (
+                        item.text
+                      ) : (
+                        <>
+                          {item.text}
+                          <FaAngleDown size={10} />
+                        </>
+                      )}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <div className="h-full flex justify-center items-center">
+                <Link href="/login" className="px-6 py-2">
+                  Log in
+                </Link>
+                <Link
+                  href=""
+                  className="h-full flex items-center px-6 py-2 bg-[#0065ff] hover:bg-[#0747a6] text-white transition-all duration-200"
+                >
+                  Get Trello For Free
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`absolute top-0 left-0 w-screen bg-white z-[1000] transition-all duration-200 ${
+            activeNavTab ? "top-[60px]" : "top-0"
+          }`}
+        >
+          {NavbarContent[activeNavTab || "Features"]}
+        </div>
       </div>
-    </div>
-    <PopUp val={features}/>
-    {/* header statment  */}
-    <div style={{backgroundColor:"rgb(222, 235, 255)"}} className='row-start-2 flex flex-wrap justify-center items-center'>
-      <p>Accelerate your teams' work with Atlassian Intelligence (AI) features 🤖 now available for all Premium and Enterprise!</p>
-      <Link className='underline text-blue-700'>Learn more.</Link>
-    </div>
-  </header>
 
-   
-  )
+    </>
+  );
 }
 
-export default Header
+function Features() {
+  return <div>Hello De</div>;
+}
+
+
+export default Navbar;
