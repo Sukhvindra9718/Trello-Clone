@@ -19,7 +19,6 @@ import { useCookies } from 'react-cookie';
 
 
 
-// const Workspaces = ["Projects", "TrelloClone"];
 const TemplatesType = ['Education', 'Engineering', 'Finance', 'Health', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Product', 'Project Management', 'Sales', 'Support', 'Team Management', 'Other']
 function Dashboard() {
     const [cookies, setCookie] = useCookies(['token']);
