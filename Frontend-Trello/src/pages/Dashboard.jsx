@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../styles/Dashboard.css"
 import { Link } from 'react-router-dom'
 import { IoSearchOutline } from "react-icons/io5";
@@ -8,18 +8,23 @@ import { useNavigate } from 'react-router-dom';
 import { PiChalkboardSimpleLight } from "react-icons/pi";
 import { LuLayoutTemplate } from "react-icons/lu";
 import { CiWavePulse1, CiSettings, CiUser, CiGrid41 } from "react-icons/ci";
-import { MdKeyboardArrowDown, MdOutlineWatchLater,MdOutlineBrowserUpdated } from "react-icons/md";
+import { MdKeyboardArrowDown, MdOutlineWatchLater, MdOutlineBrowserUpdated } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import DropDown from '../components/DropDown';
 import templatebg0 from '../images/template-bg0.jpg';
 import templatebg1 from '../images/template-bg1.jpg';
 import templatebg2 from '../images/template-bg2.jpg';
 import templatebg3 from '../images/template-bg3.jpg';
+import { useCookies } from 'react-cookie';
 
-const Workspaces = ["Projects", "TrelloClone"];
-const TeplatesType = ['Education', 'Engineering', 'Finance', 'Health', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Product', 'Project Management', 'Sales', 'Support', 'Team Management', 'Other']
+
+
+// const Workspaces = ["Projects", "TrelloClone"];
+const TemplatesType = ['Education', 'Engineering', 'Finance', 'Health', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Product', 'Project Management', 'Sales', 'Support', 'Team Management', 'Other']
 function Dashboard() {
+    const [cookies, setCookie] = useCookies(['token']);
     const [active, setActive] = React.useState('boards')
+    const [Workspaces, setWorkspaces] = React.useState([])
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -29,7 +34,7 @@ function Dashboard() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({})
+            body: JSON.stringify({ token: cookies.token})
         }).then(async (res) => {
             const data = await res.json();
 
@@ -42,6 +47,33 @@ function Dashboard() {
 
 
     }
+
+    const getWorkspaces = async () => {
+        const url = 'http://192.168.1.17:5000/api/v1/getWorkspaces'
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `${cookies.token}`
+            },
+            credentials: 'include',
+
+        }).then(async (res) => {
+            const { data } = await res.json();
+            console.log(data)
+            setWorkspaces(data)
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const handleClick = (workspace, board) => {
+        navigate('/playground', { state: { workspace: workspace, board: board } })
+    }
+    useEffect(() => {
+        getWorkspaces();
+        return () => { }
+    }, [])
     return (
         <>
             <header>
@@ -157,14 +189,14 @@ function Dashboard() {
                         <div className='w-full border-b-2 my-4'></div>
                         <h3 className='font-semibold'>Workspaces</h3>
                         <div>
-                            {Workspaces.map((workspace, index) => {
+                            {Workspaces?.length > 0 && Workspaces.map((workspace, index) => {
                                 return (
                                     <div key={index} className='flex items-center justify-between my-2 workspace-item'>
                                         <div className='flex items-center gap-4'>
                                             <div className='w-8 h-8 bg-blue-600 flex items-center justify-center rounded-md'>
-                                                <span className='text-white font-bold text-base w-4'>{workspace.substring(0, 1)}</span>
+                                                <span className='text-white font-bold text-base w-4'>{workspace.name.substring(0, 1)}</span>
                                             </div>
-                                            <p>{workspace}</p>
+                                            <p>{workspace.name}</p>
                                         </div>
                                         <MdKeyboardArrowDown size={25} />
                                     </div>
@@ -190,7 +222,7 @@ function Dashboard() {
                                     <p className=''>Get going faster with a template from the Trello community or </p>
                                 </div>
                                 <div>
-                                    <DropDown placeholder='Choose a Category' options={TeplatesType} />
+                                    <DropDown placeholder='Choose a Category' options={TemplatesType} />
                                 </div>
                             </div>
                             <div className='templates-container my-6'>
@@ -261,15 +293,15 @@ function Dashboard() {
                         </div>
                         <div className='your-workspace mb-16'>
                             <h2 className='font-semibold text-xl' style={{ color: '#172b4d' }}>YOUR WORKSPACES</h2>
-                            {Workspaces.map((workspace, index) => {
+                            {Workspaces?.length > 0 && Workspaces.map((workspace, index) => {
                                 return (
                                     <div key={index} className='flex flex-col mb-6'>
                                         <div className='flex items-center justify-between my-8 w-full'>
                                             <div className='flex items-center gap-4'>
                                                 <div className='w-8 h-8 bg-blue-600 flex items-center justify-center rounded-md'>
-                                                    <span className='text-white font-bold text-base w-4'>{workspace.substring(0, 1)}</span>
+                                                    <span className='text-white font-bold text-base w-4'>{workspace.name.substring(0, 1)}</span>
                                                 </div>
-                                                <p className='text-lg font-semibold' style={{color:"#172b4d"}}>{workspace}</p>
+                                                <p className='text-lg font-semibold' style={{ color: "#172b4d" }}>{workspace.name}</p>
                                             </div>
                                             <div className='flex items-center gap-4'>
                                                 <div className='flex items-center justify-center gap-1 bg-gray-200 rounded-sm w-28 h-8 font-semibold cursor-pointer hover:bg-gray-300'>
@@ -282,7 +314,7 @@ function Dashboard() {
                                                 </div>
                                                 <div className='flex items-center justify-center gap-1 bg-gray-200 rounded-sm w-32 h-8 font-semibold cursor-pointer hover:bg-gray-300'>
                                                     <CiUser size={20} />
-                                                    Members (1)
+                                                    Members ({workspace.members.length})
                                                 </div>
                                                 <div className='flex items-center justify-center gap-1 bg-gray-200 rounded-sm w-28 h-8 font-semibold cursor-pointer hover:bg-gray-300'>
                                                     <CiSettings size={20} />
@@ -295,13 +327,13 @@ function Dashboard() {
                                             </div>
                                         </div>
                                         <div className='flex gap-4'>
-                                            {Workspaces.map((workspace, index) => {
+                                            {workspace?.boards?.length > 0 && workspace.boards.map((board, index) => {
                                                 return (
-                                                    <div className='flex items-center gap-6' key={index}>
+                                                    <div className='flex items-center gap-6' key={index} onClick={() => handleClick(workspace, board)}>
                                                         <div className='relative cursor-pointer'>
                                                             <img src={templatebg1} alt="" className='w-56 h-28 rounded-md' />
                                                             <div className='absolute top-2 left-2'>
-                                                                <div className='text-white text-lg font-semibold'>{workspace}</div>
+                                                                <div className='text-white text-lg font-semibold'>{board.boardTitle}</div>
                                                             </div>
                                                         </div>
                                                     </div>

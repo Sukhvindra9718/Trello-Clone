@@ -5,8 +5,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cookieParser = require("cookie-parser");
-const userRoute = require('./routes/userRoutes');
 const errorMiddleware = require("./middleware/error")
+
+// Import routes
+const userRoute = require('./routes/userRoutes');
+const workspaceRoute = require('./routes/workspaceRoutes');
 
 // Load env variables
 dotenv.config({ path: 'Backend/.env.development.local' });
@@ -20,14 +23,20 @@ mongoose.connect(process.env.DB_CONNECT, {})
 
   
 // Middleware
+const corsOptions = {
+  origin: 'http://localhost:5173', // Specify the exact origin
+  credentials: true // Allow credentials
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route Middleware
 app.use('/api/v1', userRoute);
+app.use('/api/v1', workspaceRoute);
 
 
 // Error handling middleware
