@@ -1,9 +1,13 @@
+const crypto = require("crypto");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
-const crypto = require("crypto");
+const User = require("../models/userModel");
+const Workspace = require('../models/workspaceModel');
+const Board = require('../models/boardModel');
+const List = require('../models/listModel');
+const Card = require('../models/cardModel');
 
 
 // Verify Email
@@ -13,28 +17,123 @@ exports.verifyEmail = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findOne({ email });
 
   if (user) {
-    res.status(200).json({success: true});
+    res.status(200).json({ success: true });
   } else {
-    res.status(200).json({success: false});
+    res.status(200).json({ success: false });
   }
 });
 
 // Register a User
+
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { email, goal, workspace } = req.body;
 
   const user = await User.create({
-    name,
+    name: email.split("@")[0],
+    username: email.split("@")[0],
     email,
-    password,
-    avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
-    },
+    goal,
   });
-  sendToken(user, 201, res);
-});
 
+  const members = workspace.members.filter(member => member !== '');
+  
+  const newWorkspace = await Workspace.create({
+    name: workspace.name,
+    type: 'Other',
+    description: 'Personal Workspace',
+    visibility: 'Private',
+    members: [user.email, ...members],
+    user: user._id
+  });
+
+  const board = workspace.boards[0];
+  const newBoard = await Board.create({
+    boardTitle: board.name,
+    boardVisibility: 'Private',
+    boardMembers: [user.email, ...members],
+    workspace: newWorkspace._id
+  });
+
+  // Create lists and wait for them to resolve
+  const listPromises = board.lists.map((list, index) => {
+    return List.create({
+      listTitle: list,
+      listOrder: index,
+      board: newBoard._id
+    });
+  });
+  const newLists = await Promise.all(listPromises);
+  
+  // Create cards and wait for them to resolve
+  const cardPromises = board.cards.map((card, index) => {
+    return Card.create({
+      cardTitle: card,
+      cardOrder: index,
+      list: newLists[0]._id // Assuming all cards are for the first list, adjust as necessary
+    });
+  });
+  const newCards = await Promise.all(cardPromises);
+
+  const token = user.getJWTToken();
+
+  const newUser = {
+    name: user.name,
+    username: user.username,
+    email: user.email,
+    goal: user.goal,
+    userId: user._id,
+    workspace: {
+      name: newWorkspace.name,
+      members: newWorkspace.members,
+      workspaceId: newWorkspace._id,
+      boards: [
+        {
+          name: newBoard.boardTitle,
+          boardVisibility: newBoard.boardVisibility,
+          boardMembers: newBoard.boardMembers,
+          boardId: newBoard._id,
+          lists: newLists.map((list, index) => {
+            return {
+              listTitle: list.listTitle,
+              listOrder: list.listOrder,
+              listId: list._id,
+              boardId: newBoard._id,
+              cards: index === 0 ? newCards.map((card, cardIndex) => {
+                return {
+                  cardTitle: card.cardTitle,
+                  cardOrder: card.cardOrder,
+                  cardDescription: '',
+                  cardComments: [],
+                  cardLabels: [],
+                  cardMembers: [],
+                  cardDueDates: null,
+                  cardAttachments: [],
+                  notificationAccess: false,
+                  listId: card.list,
+                  cardId: card._id
+                }
+              }) : []
+            }
+          }),
+        }
+      ]
+    }
+  };
+
+  // options for cookie
+  const options = {
+    expires: new Date(
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+
+  res.status(201).cookie("token", token, options).json({
+    success: true,
+    newUser,
+    token,
+  });
+});
 // Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;

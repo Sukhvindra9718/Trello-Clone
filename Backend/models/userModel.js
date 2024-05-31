@@ -1,7 +1,17 @@
 const mongoose = require('mongoose');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
+
 
 const userSchema = new mongoose.Schema({
-    name: {
+    name:{
+        type: String,
+        required: true,
+        min: 6,
+        max: 255
+    },
+    username: {
         type: String,
         required: true,
         min: 6,
@@ -13,60 +23,34 @@ const userSchema = new mongoose.Schema({
         max: 255,
         min: 6
     },
+    bio:{
+        type: String,
+        max: 1024,
+        default: ''
+    },
     password: {
         type: String,
-        required: true,
         max: 1024,
         min: 6
     },
-    date: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    workspaces: {
-        type: Array,
-        default: []
+    goal:{
+        type: String,
+        default: ''
     },
-    boards: {
-        type: Array,
-        default: []
+    resetPasswordToken: {
+        type: String,
+        default: undefined
+    
     },
-    lists: {
-        type: Array,
-        default: []
-    },
-    cards: {
-        type: Array,
-        default: []
-    },
-    boardOrder: {
-        type: Array,
-        default: []
-    },
-    listOrder: {
-        type: Array,
-        default: []
-    },
-    cardOrder: {
-        type: Array,
-        default: []
-    },
-    cardComments: {
-        type: Array,
-        default: []
-    },
-    cardLabels: {
-        type: Array,
-        default: []
-    },
-    cardMembers: {
-        type: Array,
-        default: []
-    },
-    cardDueDates: {
-        type: Array,
-        default: []
-    },
+    resetPasswordExpire: {
+        type: Date,
+        default: undefined
+    }
+
 });
 
 userSchema.pre("save", async function (next) {
