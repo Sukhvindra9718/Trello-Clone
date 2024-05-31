@@ -17,13 +17,16 @@ import Unauthorized from './pages/Unauthorized.jsx';
 import TaskManagement from './pages/TaskManagement.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Playground from './pages/Playground.jsx';
+import { useCookies } from 'react-cookie';
 
 
 function App() {
+  const [cookies, setCookie] = useCookies(['token']);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />} >
+        <Route path="/" element={<Layout token={cookies.token}/>} >
           <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
         </Route>

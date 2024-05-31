@@ -14,11 +14,8 @@ function Login() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
-  const [cookies, setCookie] = useCookies(['token']);
 
-  function setToken(token) {
-    setCookie('token', token);
-  }
+
   const handleLogin = () => {
     const url = 'http://192.168.1.17:5000/api/user/login'
     fetch(url, {
@@ -31,9 +28,7 @@ function Login() {
       const data = await res.json();
 
       if (data.success) {
-        setToken(data.token)
         navigate('/dashboard')
-        console.log("cookies",cookies);
       } else {
         navigate('/serverError')
       }
@@ -63,7 +58,7 @@ function Login() {
 
   }
 
-  
+
 
   return (
     <>
