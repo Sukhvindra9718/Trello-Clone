@@ -3,6 +3,10 @@ import {  useNavigate } from "react-router-dom";
 function HomeSection1() {
   const navigate = useNavigate()
   const inputRef = useRef(null);
+
+  const handleSignUpProcess = () => {
+    navigate("signup", { state: { email: inputRef.current?.value } });
+  };
   return (
     <div
       style={{
@@ -32,7 +36,7 @@ function HomeSection1() {
             className="px-4 py-2 rounded text-black focus:outline-none"
             required
           />
-          <button className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-5 rounded whitespace-nowrap">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-5 rounded whitespace-nowrap" onClick={()=> handleSignUpProcess()}>
             Sign up - it’s free!
           </button>
         </form>

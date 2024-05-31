@@ -1,4 +1,3 @@
-import React from 'react'
 import '../components/Header.jsx'
 function PopUp({val,val2}) {
   console.log(val,val2);

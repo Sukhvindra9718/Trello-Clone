@@ -1,10 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaAtlassian } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
+import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
+
+
 function Login() {
+  const [email, setEmail] = useState('')
+  const [showPass, setShowPass] = useState(false)
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+
+  const [cookies, setCookie] = useCookies(['token']);
+
+  function setToken(token) {
+    setCookie('token', token);
+  }
+  const handleLogin = () => {
+    const url = 'http://192.168.1.17:5000/api/user/login'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email, password: password })
+    }).then(async (res) => {
+      const data = await res.json();
+
+      if (data.success) {
+        setToken(data.token)
+        navigate('/dashboard')
+        console.log("cookies",cookies);
+      } else {
+        navigate('/serverError')
+      }
+    })
+
+
+  }
+
+  const handleVerifyEmail = () => {
+    const url = 'http://192.168.1.17:5000/api/user/verifyEmail'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+    }).then(async (res) => {
+      const data = await res.json();
+
+      if (data.success) {
+        setShowPass(true)
+      } else {
+        setShowPass(false)
+      }
+    })
+
+
+  }
+
+  
+
   return (
     <>
       <section className="background"></section>
@@ -17,18 +77,33 @@ function Login() {
             />
           </div>
           <div className="input">
-            <p className="text-center w-full text-xl">log in to continue</p>
+            <h1 className="text-center w-full text-2xl font-semibold">Login to continue</h1>
             <input
               type="email"
-              className=" border-grey border-2"
-              placeholder="Eneter your email"
+              className=" border-grey border-2 pl-4"
+              placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <button
+            {showPass && <input
+              type="email"
+              className=" border-grey border-2"
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />}
+            {showPass ? <button
               style={{ backgroundColor: "rgb(0 128 255)" }}
               className="text-white w-full"
+              onClick={() => handleLogin()}
             >
-              Continue
-            </button>
+              Login
+            </button> :
+              <button
+                style={{ backgroundColor: "rgb(0 128 255)" }}
+                className="text-white w-full"
+                onClick={() => handleVerifyEmail()}
+              >
+                Continue
+              </button>}
           </div>
           <div className="orContinueWith">
             <p>Or continue with</p>
@@ -117,7 +192,7 @@ function Login() {
             <div className="creatAnAcount">
               <Link>Can't Login?</Link>
               <p className="css-1x34ed1">•</p>
-              <Link to="singup">Creat an account</Link>
+              <Link to="/signup">Creat an account</Link>
             </div>
           </div>
           <div className="footer">
