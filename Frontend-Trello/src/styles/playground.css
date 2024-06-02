@@ -1,0 +1,14 @@
+.board-selected {
+    background-color: #ffffff3d;
+    color: white;
+}
+
+.bg-gradient-btn {
+    background: linear-gradient(270deg, #6E5DC6, #4b7bec);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    margin-top: 0.5rem;
+}

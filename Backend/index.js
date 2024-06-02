@@ -10,6 +10,8 @@ const errorMiddleware = require("./middleware/error")
 // Import routes
 const userRoute = require('./routes/userRoutes');
 const workspaceRoute = require('./routes/workspaceRoutes');
+const listRoute = require('./routes/listRoutes');
+const boardRoute = require('./routes/boardRoutes');
 
 // Load env variables
 dotenv.config({ path: 'Backend/.env.development.local' });
@@ -37,7 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Route Middleware
 app.use('/api/v1', userRoute);
 app.use('/api/v1', workspaceRoute);
-
+app.use('/api/v1', listRoute);
+app.use('/api/v1', boardRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
