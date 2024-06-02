@@ -36,7 +36,7 @@ function Signup6() {
             const data = await res.json();
             setCookie('token', data.token);
             if (data.success) {
-                navigate("/playground", { state: { userObj: data} });
+                navigate("/playground", { workspace: userObj.workspace, boardId: board._id,boardTitle:board.boardTitle });
             }
         }).catch((err) => {
             console.log(err);
