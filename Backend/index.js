@@ -3,25 +3,44 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const userRoute = require('./routes/userRoutes');
+const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middleware/error")
 
-dotenv.config({ path: './Backend/.env.development.local' });
+// Import routes
+const userRoute = require('./routes/userRoutes');
+const workspaceRoute = require('./routes/workspaceRoutes');
+const listRoute = require('./routes/listRoutes');
+const boardRoute = require('./routes/boardRoutes');
+
+// Load env variables
+dotenv.config({ path: 'Backend/.env.development.local' });
 
 
 // Connect to DB
-
 mongoose.connect(process.env.DB_CONNECT, {})
   .then(() => console.log('Connected to DB'))
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
+
+  
 // Middleware
+const corsOptions = {
+  origin: 'http://localhost:5173', // Specify the exact origin
+  credentials: true // Allow credentials
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route Middleware
 app.use('/api/v1', userRoute);
-
+app.use('/api/v1', workspaceRoute);
+app.use('/api/v1', listRoute);
+app.use('/api/v1', boardRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -48,11 +67,8 @@ if(process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../Frontend-Trello/dist', 'index.html'));
   });
-}else{
-  app.get('/', (req, res) => {
-    res.send('API is running...');
-  });
 }
+
 // Graceful shutdown
 process.on('SIGINT', () => {
   console.log('Server is shutting down...');

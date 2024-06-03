@@ -3,11 +3,12 @@ import "../../styles/Signup.css"
 import DashboardLogo from "../../images/dashboard-logo2.gif"
 import pricingimg from "../../images/pricingimg.png"
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
 
 function Signup6() {
     const navigate = useNavigate();
     const { state } = useLocation();
-
+    const [cookies, setCookie] = useCookies(['token']);
 
     const handleSignUpProcess = () => {
         const obj = {
@@ -22,7 +23,7 @@ function Signup6() {
                         cards: state.cards
                     }
                 ],
-                teammates:state.teammates
+                members:state.teammates
             },
         }
         fetch("http://localhost:5000/api/v1/register", {
@@ -33,14 +34,16 @@ function Signup6() {
             body: JSON.stringify(obj),
         }).then(async (res) => {
             const data = await res.json();
-
+            setCookie('token', data.token);
             if (data.success) {
-                navigate("/playground", { state: { userObj: obj } });
+                navigate("/playground", { workspace: userObj.workspace, boardId: board._id,boardTitle:board.boardTitle });
             }
         }).catch((err) => {
             console.log(err);
         });
     }
+
+    
     return (
         <div className='pricing-container-signup'>
             <header className='pricing-header shadow-sm'>
