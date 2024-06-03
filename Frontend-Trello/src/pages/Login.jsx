@@ -97,7 +97,7 @@ function Login() {
                 Continue
               </button>}
           </div>
-          <div className="orContinueWith">
+            <div className="orContinueWith">
             <p>Or continue with</p>
             <div className="icons">
               <FcGoogle size={25} /> <p>Google</p>
