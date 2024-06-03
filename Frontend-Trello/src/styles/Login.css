@@ -59,6 +59,8 @@ height: 2.5rem;
 }
 .orContinueWith{
     display: grid;
+    position: relative;
+    bottom: 10px;
     gap: 15px;
     width: 80%;
     grid-auto-rows: 3;
