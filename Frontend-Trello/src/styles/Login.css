@@ -40,7 +40,7 @@ align-items: center;
 .logo img{
 position: relative;
 top: 0px;
-height: 35%;
+height: 30px;
 }
 .input{
     display: flex;;
