@@ -99,11 +99,13 @@ font-weight: 700;
     grid-template-rows: 30% 70%;
 }
 .footer .logos{
+    position: relative;
     grid-row: 1;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-content: flex-end;
+    top:30px;
     gap: 10px;
 }
 .footer .logos h5{
@@ -125,8 +127,10 @@ font-weight: 700;
     top: 10px;
 }
 .footerText p{
+position: relative;
 line-height: 10px;
 font-size: x-small;
+top:40px;
 }
 .footerText .link{
     color: #0052cc;
