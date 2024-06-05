@@ -40,7 +40,7 @@ align-items: center;
 .logo img{
 position: relative;
 top: 0px;
-height: 35%;
+height: 30px;
 }
 .input{
     display: flex;;
@@ -59,6 +59,8 @@ height: 2.5rem;
 }
 .orContinueWith{
     display: grid;
+    position: relative;
+    bottom: 10px;
     gap: 15px;
     width: 80%;
     grid-auto-rows: 3;
@@ -99,6 +101,8 @@ font-weight: 700;
     grid-template-rows: 30% 70%;
 }
 .footer .logos{
+    position: relative;
+    top:30px;
     grid-row: 1;
     display: flex;
     justify-content: center;
@@ -121,12 +125,14 @@ font-weight: 700;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
-    top: 10px;
+
 }
 .footerText p{
+position: relative;
 line-height: 10px;
 font-size: x-small;
+top: 40px;
+
 }
 .footerText .link{
     color: #0052cc;
