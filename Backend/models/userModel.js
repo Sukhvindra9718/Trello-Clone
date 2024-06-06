@@ -14,12 +14,14 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
+        unique: [true, 'Username already exists'],
         min: 6,
         max: 255
     },
     email: {
         type: String,
         required: true,
+        unique: [true, 'Email already exists'],
         max: 255,
         min: 6
     },
@@ -28,9 +30,9 @@ const userSchema = new mongoose.Schema({
         max: 1024,
         default: ''
     },
-    password: {
+    otp: {
         type: String,
-        max: 1024,
+        max: 6,
         min: 6
     },
     createdAt: {
@@ -71,6 +73,7 @@ userSchema.methods.getJWTToken = function () {
 // Compare Password
 
 userSchema.methods.comparePassword = async function (password) {
+    console.log(password, this);
     return await bcrypt.compare(password, this.password);
 };
 

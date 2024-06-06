@@ -19,6 +19,7 @@ function Signup1() {
   const { state } = useLocation();
 
   const handleSignUpProcess = () => {
+    if (state.boardId) return navigate("/signup/signup2", { state: { email: state.email, boardId: state.boardId, goal: goal } });
     navigate("/signup/signup2", { state: { email: state.email, goal: goal } });
   };
 

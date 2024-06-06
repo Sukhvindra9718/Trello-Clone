@@ -45,7 +45,7 @@ function Dashboard() {
     }
 
     const getWorkspaces = async () => {
-        const url = 'http://192.168.1.17:5000/api/v1/getWorkspaces'
+        const url = 'http://192.168.1.11:5000/api/v1/getWorkspaces'
         fetch(url, {
             method: 'GET',
             headers: {
@@ -64,7 +64,7 @@ function Dashboard() {
     }
 
     const handleClick = (workspace, board) => {
-        navigate('/playground', { state: { workspace: workspace, boardId: board._id,boardTitle:board.boardTitle } })
+        navigate('/playground', { state: { workspace: workspace, board } })
     }
     useEffect(() => {
         getWorkspaces();

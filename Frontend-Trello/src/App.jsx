@@ -17,8 +17,11 @@ import Unauthorized from './pages/Unauthorized.jsx';
 import TaskManagement from './pages/TaskManagement.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Playground from './pages/Playground.jsx';
+import BoardInvite from './pages/BoardInvite.jsx';
+import VerifyEmail from './pages/VerifyEmail.jsx';
+import VerificationWelcome from './pages/VerificationWelcome.jsx';
+import VerificationWelcome2 from './pages/VerificationWelcome2.jsx';
 import { useCookies } from 'react-cookie';
-
 
 function App() {
   const [cookies, setCookie] = useCookies(['token']);
@@ -40,6 +43,10 @@ function App() {
         <Route path="/signup/signup6" element={<Signup6/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/playground" element={<Playground />} />
+        <Route path="/boardinvited/:id" element={<BoardInvite />} />
+        <Route path="/verifyEmail'" element={<VerifyEmail />} />
+        <Route path="/verifyEmail/welcome" element={<VerificationWelcome />} />
+        <Route path="/signup/welcome2" element={<VerificationWelcome2 />} />
         <Route path="/task-management" element={<TaskManagement />} />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/server-error" element={<ServerError />} />

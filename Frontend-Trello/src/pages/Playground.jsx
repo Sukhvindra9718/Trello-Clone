@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { useLocation } from 'react-router-dom'
 import DashboardHeader from '../components/DashboardHeader'
 import { FaRegStar, FaCalendarAlt } from "react-icons/fa";
@@ -17,7 +17,7 @@ import '../styles/playground.css'
 import listIcon from '../images/listIcon.svg'
 import jira from '../images/jira.png'
 import Board from '../components/Board'
-
+import { useCookies } from 'react-cookie';
 
 
 
@@ -25,8 +25,36 @@ import Board from '../components/Board'
 
 function Playground() {
   const { state } = useLocation();
-  console.log(state.boardId)
+  const [data, setData] = useState({});
+  const [cookies, setCookie] = useCookies(['token']);
 
+  const getBoard = async () => {
+    const url = `http://localhost:5000/api/v1/getBoardById/${state.board._id}`;
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `${cookies.token}`
+      },
+      body: JSON.stringify({})
+    }).then(async (response) => {
+      if (response.ok) {
+        const res = await response.json();
+        setData(res.newBoard);
+        console.log("playground",res.newBoard);
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  useEffect(() => {
+    getBoard();
+    return () => { }
+  }, []);
+
+  
   return (
     <div>
       <DashboardHeader />
@@ -118,7 +146,7 @@ function Playground() {
                 <h1 className='font-semibold text-sm mt-2 mb-4'>Jira Keeps your projects organized</h1>
                 <p style={{ fontSize: "13px" }}>Jira's customizability and structure makes handling all your team's projects and processes a breeze.</p>
                 <div className='bg-gradient-btn w-32'>
-                  <svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><path fill="white" fill-rule="evenodd" d="M9.276 4.382L7.357 9.247l-4.863 1.917a.78.78 0 000 1.45l4.863 1.918 1.919 4.863a.78.78 0 001.45 0h-.001l1.918-4.863 4.864-1.919a.781.781 0 000-1.45l-4.864-1.916-1.918-4.865a.776.776 0 00-.44-.438.778.778 0 00-1.01.438zm8.297-2.03l-.743 1.886-1.884.743a.56.56 0 000 1.038l1.884.743.743 1.886a.558.558 0 001.038 0l.745-1.886 1.883-.743a.557.557 0 000-1.038l-1.883-.743-.745-1.885a.552.552 0 00-.314-.314.562.562 0 00-.724.314zm-.704 13.003l-.744 1.883-1.883.744a.553.553 0 00-.316.314.56.56 0 00.316.724l1.883.743.744 1.884c.057.144.17.258.314.315a.56.56 0 00.724-.315l.744-1.884 1.883-.743a.557.557 0 000-1.038l-1.883-.744-.744-1.883a.551.551 0 00-.315-.316.56.56 0 00-.723.316z"></path></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><path fill="white" fillRule="evenodd" d="M9.276 4.382L7.357 9.247l-4.863 1.917a.78.78 0 000 1.45l4.863 1.918 1.919 4.863a.78.78 0 001.45 0h-.001l1.918-4.863 4.864-1.919a.781.781 0 000-1.45l-4.864-1.916-1.918-4.865a.776.776 0 00-.44-.438.778.778 0 00-1.01.438zm8.297-2.03l-.743 1.886-1.884.743a.56.56 0 000 1.038l1.884.743.743 1.886a.558.558 0 001.038 0l.745-1.886 1.883-.743a.557.557 0 000-1.038l-1.883-.743-.745-1.885a.552.552 0 00-.314-.314.562.562 0 00-.724.314zm-.704 13.003l-.744 1.883-1.883.744a.553.553 0 00-.316.314.56.56 0 00.316.724l1.883.743.744 1.884c.057.144.17.258.314.315a.56.56 0 00.724-.315l.744-1.884 1.883-.743a.557.557 0 000-1.038l-1.883-.744-.744-1.883a.551.551 0 00-.315-.316.56.56 0 00-.723.316z"></path></svg>
                   <span className='text-white font-medium'>Try it free</span>
                 </div>
               </div>
@@ -126,7 +154,7 @@ function Playground() {
             <p style={{ borderBottom: '1px solid hsla(0,0%,100%,0.2)', height: "1px" }}></p>
             <div className='py-2 px-4'>
               <div className='bg-gradient-btn'>
-                <svg width="20" height="20" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V6H19V20H5V6H7V5ZM9 6H15V5H9V6ZM7 9C7 8.44772 7.44772 8 8 8H10C10.5523 8 11 8.44772 11 9V16C11 16.5523 10.5523 17 10 17H8C7.44772 17 7 16.5523 7 16V9ZM14 8C13.4477 8 13 8.44772 13 9V14C13 14.5523 13.4477 15 14 15H16C16.5523 15 17 14.5523 17 14V9C17 8.44772 16.5523 8 16 8H14Z" fill="white"></path><path d="M4 6C2.89543 6 2 6.89543 2 8V18C2 19.1046 2.89543 20 4 20L4 6Z" fill="white"></path><path d="M20 20V6C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20Z" fill="white"></path></svg>
+                <svg width="20" height="20" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M7 5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V6H19V20H5V6H7V5ZM9 6H15V5H9V6ZM7 9C7 8.44772 7.44772 8 8 8H10C10.5523 8 11 8.44772 11 9V16C11 16.5523 10.5523 17 10 17H8C7.44772 17 7 16.5523 7 16V9ZM14 8C13.4477 8 13 8.44772 13 9V14C13 14.5523 13.4477 15 14 15H16C16.5523 15 17 14.5523 17 14V9C17 8.44772 16.5523 8 16 8H14Z" fill="white"></path><path d="M4 6C2.89543 6 2 6.89543 2 8V18C2 19.1046 2.89543 20 4 20L4 6Z" fill="white"></path><path d="M20 20V6C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20Z" fill="white"></path></svg>
                 <span className='text-white font-medium' style={{ fontSize: "14px" }}>Upgrade to Trello Premium</span>
               </div>
             </div>
@@ -173,7 +201,7 @@ function Playground() {
           </div>
           <div className='bg-pink-300 flex gap-4 p-4 w-full overflow-x-auto' style={{ height: "92%" }}>
             <div className='flex gap-4'>
-              <Board boardId={state.boardId} boardTitle={state.boardTitle}/>
+              <Board board={data} cookies={cookies}/>
             </div>
           </div>
 

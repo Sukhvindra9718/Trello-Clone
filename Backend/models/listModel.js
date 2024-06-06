@@ -4,7 +4,6 @@ const listSchema = new mongoose.Schema({
     listTitle: {
         type: String,
         required: true,
-        unique: true
     },
     listOrder: {
         type: Number,
