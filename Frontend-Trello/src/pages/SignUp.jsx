@@ -1,21 +1,54 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaAtlassian } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { DiApple } from "react-icons/di";
 import { Link } from 'react-router-dom';
 import '../styles/Signup.css'
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const [email, setEmail] = useState('')
-  const {state} = useLocation();
+  const { state } = useLocation();
+
+  console.log(state)
   const navigate = useNavigate()
   useEffect(() => {
     setEmail(state?.email)
   }, [state?.email])
 
+
+  const sendVerifyEmail = async () => {
+    console.log(state.board)
+    if(state.board._id === undefined) {
+      alert("Board id required");
+      return;
+    }
+    console.log(email)
+    if(email === ''){
+      alert("Email is required");
+      return;
+    }
+    const url = `http://localhost:5000/api/v1/sendVerifyEmail`;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email, boardId: state.board._id,resend:false,isUserExist:false })
+    }).then(async (response) => {
+      if (response.ok) {
+        navigate('/verifyEmail/welcome', { state: { email: email ,boardId: state.board._id} });
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+    });
+  }
   const handleSignUpProcess = () => {
-    navigate('signup1', { state: { email: email } });
+    if (state.board) {
+      sendVerifyEmail()
+    } else {
+      navigate('signup1', { state: { email: email } });
+    }
   }
   return (
     <>
@@ -29,7 +62,7 @@ function SignUp() {
             <h1 className='text-center w-full text-2xl font-semibold'>Sign up to continue</h1>
             <input type="email" className=' border-grey border-2 pl-4' placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
             <p style={{ fontWeight: "400", fontSize: "10px" }}>By signing up, I accept the Atlassian <Link className='text-blue-500'>Cloud Terms of Service </Link>and acknowledge the <Link className='text-blue-500'>Privacy Policy.</Link></p>
-            <button style={{ backgroundColor: "rgb(0 128 255)" }} className='text-white w-full' onClick={()=>handleSignUpProcess()}>Continue</button>
+            <button style={{ backgroundColor: "rgb(0 128 255)" }} className='text-white w-full' onClick={() => handleSignUpProcess()}>Continue</button>
           </div>
           <div className='orContinueWith'>
             <p className='mt-3'>Or continue with</p>

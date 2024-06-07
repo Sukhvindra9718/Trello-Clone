@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
-import fileSvg from '../images/file.svg';
-import { useCookies } from 'react-cookie';
+import List from './List';
 
-const Board = ({ boardId,boardTitle }) => {
+const Board = ({ board, cookies }) => {
   const [data, setData] = useState({});
   const [isListClicked, setIsListClicked] = useState(false);
   const [listTitle, setListTitle] = useState('');
-  const [cookies, setCookie] = useCookies(['token']);
+  
 
   const onDragEnd = (result) => {
     const { destination, source, type } = result;
@@ -112,31 +110,15 @@ const Board = ({ boardId,boardTitle }) => {
     setIsListClicked(false);
     setListTitle('');
   }
+ 
 
-  const getBoard = async () => {
-    const url = `http://localhost:5000/api/v1/getBoardById/${boardId}`;
-
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `${cookies.token}`
-      },
-      body: JSON.stringify({boardTitle})
-    }).then(async (response) => {
-      if (response.ok) {
-        const res = await response.json();
-        setData(res.newBoard);
-      }
-    }).catch(error => {
-      console.error('Error:', error);
-    });
-  }
 
   useEffect(() => {
-    getBoard();
-    return () => {}
-  }, []);
+    setData(board);
+    return () => { }
+  }, [board]);
+
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="all-lists" direction="horizontal" type="list">
@@ -151,12 +133,16 @@ const Board = ({ boardId,boardTitle }) => {
                 {(provided) => (
                   <div
                     {...provided.draggableProps}
-                    ref={provided.innerRef}
                     {...provided.dragHandleProps}
+                    ref={provided.innerRef}
                     className='flex gap-4 h-full'
                     style={{ width: "300px", ...provided.draggableProps.style }}
                   >
-                    <List list={list} />
+                    <List
+                      list={list}
+                      cookies={cookies}
+                      setData={setData}
+                    />
                   </div>
                 )}
               </Draggable>
@@ -189,46 +175,5 @@ const Board = ({ boardId,boardTitle }) => {
   );
 };
 
-const List = ({ list }) => {
-  return (
-    <Droppable droppableId={list._id} type="card">
-      {(provided) => (
-        <div className='bg-gray-100 rounded-lg h-fit p-2 w-full' style={{ minHeight: "10%" }} >
-          <div className='flex items-center justify-between px-2'>
-            <h1 className='font-semibold'>{list.listTitle}</h1>
-            <HiOutlineDotsHorizontal color='gray' size={25} />
-          </div>
-          <div className='flex flex-col gap-2 mt-2' {...provided.droppableProps} ref={provided.innerRef}>
-            {list?.cards?.map((card, index) => (
-              <Card key={card._id} card={card} index={index} />
-            ))}
-            {provided.placeholder}
-          </div>
-          <div className='flex items-center justify-between'>
-            <div className='flex items-center gap-2 m-2'>
-              <FaPlus className='text-gray-500 mb-1' size={16} />
-              <span className='text-gray-500 font-semibold font-base'>Add a card</span>
-            </div>
-            <div className='mr-2'>
-              <img src={fileSvg} alt='file' className='w-6 h-6' />
-            </div>
-          </div>
-        </div>
-      )}
-    </Droppable>
-  );
-};
-
-const Card = ({ card, index }) => {
-  return (
-    <Draggable draggableId={card._id} index={index}>
-      {(provided) => (
-        <div key={index} className='rounded-lg bg-white shadow-2xl p-2' {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-          <h1 className='font-medium'>{card.cardTitle}</h1>
-        </div>
-      )}
-    </Draggable>
-  );
-};
 
 export default Board;

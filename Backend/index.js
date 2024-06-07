@@ -12,6 +12,8 @@ const userRoute = require('./routes/userRoutes');
 const workspaceRoute = require('./routes/workspaceRoutes');
 const listRoute = require('./routes/listRoutes');
 const boardRoute = require('./routes/boardRoutes');
+const cardRoute = require('./routes/cardRoutes');
+
 
 // Load env variables
 dotenv.config({ path: 'Backend/.env.development.local' });
@@ -41,6 +43,7 @@ app.use('/api/v1', userRoute);
 app.use('/api/v1', workspaceRoute);
 app.use('/api/v1', listRoute);
 app.use('/api/v1', boardRoute);
+app.use('/api/v1', cardRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

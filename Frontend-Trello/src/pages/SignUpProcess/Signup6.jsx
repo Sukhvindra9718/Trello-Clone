@@ -34,9 +34,11 @@ function Signup6() {
             body: JSON.stringify(obj),
         }).then(async (res) => {
             const data = await res.json();
+            console.log(data.newUser.workspace);
+            console.log(data.newUser.workspace.boards[0]);
             setCookie('token', data.token);
             if (data.success) {
-                navigate("/playground", { workspace: userObj.workspace, boardId: board._id,boardTitle:board.boardTitle });
+                navigate("/playground", {state:{ workspace: data.newUser.workspace, board: data.newUser.workspace.boards[0]}});
             }
         }).catch((err) => {
             console.log(err);
