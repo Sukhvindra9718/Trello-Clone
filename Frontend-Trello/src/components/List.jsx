@@ -18,7 +18,7 @@ const List = ({ list,cookies,setData }) => {
             return;
         }
 
-        const url = 'http://192.168.1.11:5000/api/v1/createCard';
+        const url = 'http://localhost:5000/api/v1/createCard';
         const data = {
             cardTitle: cardTitle,
             cardOrder: list.cards.length,
