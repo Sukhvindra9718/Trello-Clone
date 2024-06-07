@@ -32,3 +32,9 @@ html {
     transform-origin: bottom left;
     color: #0087ca;
 }
+#heading{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
