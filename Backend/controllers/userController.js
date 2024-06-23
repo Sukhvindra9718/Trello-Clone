@@ -18,6 +18,43 @@ exports.verifyEmail = catchAsyncErrors(async (req, res, next) => {
 
   if (user) {
     res.status(200).json({ success: true });
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    user.otp = otp;
+    await user.save({ validateBeforeSave: false });
+
+    const message = `<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f4; padding: 20px;">
+        <tr>
+            <td align="center">
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                    <tr>
+                        <td align="center" style="padding: 20px; background-color: #007bff; border-radius: 8px 8px 0 0;">
+                            <h1 style="margin: 0; color: #ffffff;">Your OTP Code</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 40px 20px;">
+                            <p style="font-size: 16px; color: #333333;">Hello,</p>
+                            <p style="font-size: 16px; color: #333333;">Use the following OTP code to complete login:</p>
+                            <p style="font-size: 24px; color: #007bff; font-weight: bold; margin: 20px 0;">${otp}</p>
+                            <p style="font-size: 16px; color: #333333;">This OTP code is valid for 10 minutes.</p>
+                            <p style="font-size: 16px; color: #333333;">If you did not request this code, please ignore this email.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 20px; background-color: #f4f4f4; border-radius: 0 0 8px 8px;">
+                            <p style="font-size: 14px; color: #777777;">Thank you,</p>
+                            <p style="font-size: 14px; color: #777777;">Trello</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>`
+    sendEmail({
+      email: user.email,
+      subject: "Trello OTP Code",
+      message
+    });
   } else {
     res.status(200).json({ success: false });
   }
@@ -25,7 +62,7 @@ exports.verifyEmail = catchAsyncErrors(async (req, res, next) => {
 
 // Send Verify Email
 exports.sendVerifyEmail = catchAsyncErrors(async (req, res, next) => {
-  const { email, boardId, resend,isUserExist} = req.body;
+  const { email, boardId, resend, isUserExist } = req.body;
 
   console.log(req.body)
   let user;
@@ -40,8 +77,8 @@ exports.sendVerifyEmail = catchAsyncErrors(async (req, res, next) => {
     user = await User.findOne({ email });
   }
 
-  if(!user){
-    return new ErrorHandler("User not found",400)
+  if (!user) {
+    return new ErrorHandler("User not found", 400)
   }
   const token = user.getJWTToken();
 
@@ -236,12 +273,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.verifyOtp = catchAsyncErrors(async (req, res, next) => {
-  const { otp } = req.body;
+  const {email, otp } = req.body;
 
   const
-    user = await User.findOne({
-      otp
-    });
+    user = await User.findOne({email,otp});
 
   if (!user) {
     return next(new ErrorHandler("Invalid OTP", 400));
@@ -253,65 +288,6 @@ exports.verifyOtp = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-// Login User
-exports.loginUser = catchAsyncErrors(async (req, res, next) => {
-  const { email } = req.body;
-
-  // checking if user has given password and email both
-
-  if (!email) {
-    return next(new ErrorHandler("Please Enter Email", 400));
-  }
-
-  // const user = await User.findOne({ email }).select("+password");
-  const user = await User.findOne({ email })
-
-  if (!user) {
-    return next(new ErrorHandler("Invalid email", 401));
-  }
-
-  const otp = Math.floor(100000 + Math.random() * 900000);
-  user.otp = otp;
-  await user.save({ validateBeforeSave: false });
-
-  const message = `<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f4; padding: 20px;">
-        <tr>
-            <td align="center">
-                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                    <tr>
-                        <td align="center" style="padding: 20px; background-color: #007bff; border-radius: 8px 8px 0 0;">
-                            <h1 style="margin: 0; color: #ffffff;">Your OTP Code</h1>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 40px 20px;">
-                            <p style="font-size: 16px; color: #333333;">Hello,</p>
-                            <p style="font-size: 16px; color: #333333;">Use the following OTP code to complete login:</p>
-                            <p style="font-size: 24px; color: #007bff; font-weight: bold; margin: 20px 0;">${otp}</p>
-                            <p style="font-size: 16px; color: #333333;">This OTP code is valid for 10 minutes.</p>
-                            <p style="font-size: 16px; color: #333333;">If you did not request this code, please ignore this email.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 20px; background-color: #f4f4f4; border-radius: 0 0 8px 8px;">
-                            <p style="font-size: 14px; color: #777777;">Thank you,</p>
-                            <p style="font-size: 14px; color: #777777;">Trello</p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>`
-  sendEmail({
-    email: user.email,
-    subject: "Trello OTP Code",
-    message
-  });
-
-  res.status(200).json({
-    success: true,
-  });
-});
 
 // Logout User
 exports.logoutUser = catchAsyncErrors(async (req, res, next) => {

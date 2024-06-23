@@ -1,5 +1,3 @@
-"use client";
-
 import { Link } from "react-router-dom";
 import {  useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
@@ -18,7 +16,7 @@ function Navbar() {
         <div className="flex justify-center h-[60px] w-screen bg-white relative z-[10000]">
           <div className="flex items-center justify-between h-full w-[min(1320px,100vw)] ">
             <div className="flex gap-5 h-full">
-              <Link href="" className="flex items-center h-full px-6 py-2">
+              <Link to="/" className="flex items-center h-full px-6 py-2">
                 <img
                   src="trello.svg"
                   width={100}
@@ -70,11 +68,11 @@ function Navbar() {
                 ))}
               </ul>
               <div className="h-full flex justify-center items-center">
-                <Link href="/login" className="px-6 py-2">
+                <Link to="/login" className="px-6 py-2">
                   Log in
                 </Link>
                 <Link
-                  href=""
+                  to="/register"
                   className="h-full flex items-center px-6 py-2 bg-[#0065ff] hover:bg-[#0747a6] text-white transition-all duration-200"
                 >
                   Get Trello For Free

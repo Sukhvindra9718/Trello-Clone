@@ -23,6 +23,12 @@ import VerificationWelcome from './pages/VerificationWelcome.jsx';
 import VerificationWelcome2 from './pages/VerificationWelcome2.jsx';
 import { useCookies } from 'react-cookie';
 
+const Logout = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  removeCookie('token');
+  return window.location.href = '/';
+}
+
 function App() {
   const [cookies, setCookie] = useCookies(['token']);
 
@@ -51,6 +57,7 @@ function App() {
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/server-error" element={<ServerError />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path='/logout' element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -5,25 +5,26 @@ import { DiApple } from "react-icons/di";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
 import { useNavigate } from 'react-router-dom'
-import { useCookies } from 'react-cookie';
+
 
 
 function Login() {
   const [email, setEmail] = useState('')
   const [showPass, setShowPass] = useState(false)
-  const [password, setPassword] = useState('')
+  const [otp, setOtp] = useState('')
   const navigate = useNavigate();
 
 
 
   const handleLogin = () => {
-    const url = 'http://localhost:5000/api/v1/login'
+    const url = 'http://localhost:5000/api/v1/verifyOtp'
+    console.log(url)
     fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: email, password: password })
+      body: JSON.stringify({ email: email, otp: otp })
     }).then(async (res) => {
       const data = await res.json();
 
@@ -38,7 +39,7 @@ function Login() {
   }
 
   const handleVerifyEmail = () => {
-    const url = 'http://localhost:5000/api/user/verifyEmail'
+    const url = 'http://localhost:5000/api/v1/verifyEmail'
     fetch(url, {
       method: 'POST',
       headers: {
@@ -47,10 +48,12 @@ function Login() {
       body: JSON.stringify({ email: email })
     }).then(async (res) => {
       const data = await res.json();
-
+      console.log(data)
       if (data.success) {
+        alert('OTP sent to your email')
         setShowPass(true)
       } else {
+        alert('Email not found')
         setShowPass(false)
       }
     })
@@ -77,10 +80,11 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
             {showPass && <input
-              type="email"
-              className=" border-grey border-2"
-              placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              className=" border-grey border-2 pl-4"
+              placeholder="Enter your otp"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
             />}
             {showPass ? <button
               style={{ backgroundColor: "rgb(0 128 255)" }}
