@@ -4,7 +4,7 @@
   "description": "",
   "main": "Backend/index.js",
   "scripts": {
-    "start": "node Backend/index.js",
+    "start": "cd Frontend && npm run build && node Backend/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "npm run dev --prefix Frontend-Trello",
     "server": "nodemon Backend/index.js"
