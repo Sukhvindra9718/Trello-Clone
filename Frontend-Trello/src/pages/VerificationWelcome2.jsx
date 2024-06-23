@@ -62,7 +62,7 @@ const VerificationWelcome2 = () => {
                         <FaAtlassian size={20} className='color' /> <h5 className='text-end'>ATLASSIAN</h5>
                     </div>
                     <p style={styles.footerText}>One account for Trello, Jira, Confluence and more.</p>
-                    <p style={styles.footerText}>This site is protected by reCAPTCHA and Google <a style={styles.resendLink}>Privacy Policy</a> and <a style={styles.resendLink}>Terms of Service</a> apply</p>
+                    <p style={styles.footerText} className='text-center'>This site is protected by reCAPTCHA and Google <a style={styles.resendLink}>Privacy Policy</a> and <a style={styles.resendLink}>Terms of Service</a> apply</p>
                 </div>
             </div>
             <div style={styles.backgroundImageright}>
