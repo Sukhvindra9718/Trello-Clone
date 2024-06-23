@@ -28,7 +28,7 @@ mongoose.connect(process.env.DB_CONNECT, {})
   
 // Middleware
 const corsOptions = {
-  origin: 'http://localhost:5173', // Specify the exact origin
+  origin: process.env.NODE_ENV === "production" ? "https://trello-clone-vvxa.onrender.com" : 'http://localhost:5173', // Specify the exact origin
   credentials: true // Allow credentials
 };
 
