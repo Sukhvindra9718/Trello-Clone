@@ -18,7 +18,7 @@ import listIcon from '../images/listIcon.svg'
 import jira from '../images/jira.png'
 import Board from '../components/Board'
 import { useCookies } from 'react-cookie';
-
+import Table from './Table';
 
 
 
@@ -27,6 +27,7 @@ function Playground() {
   const { state } = useLocation();
   const [data, setData] = useState({});
   const [cookies, setCookie] = useCookies(['token']);
+  const [view,setView]=useState('Board')
 
   const getBoard = async () => {
     const url = `http://localhost:5000/api/v1/getBoardById/${state.board._id}`;
@@ -116,7 +117,7 @@ function Playground() {
                 <div className='flex item-center'>
                   <FaTableList size={16} className='text-white' />
                 </div>
-                <p className='font-medium text-gray-100 italic'>Table</p>
+                <p className='font-medium text-gray-100 italic' onClick={()=>setView('Table')} >Table</p>
               </li>
               <li className='flex items-center gap-4'>
                 <div className='flex item-center'>
@@ -201,7 +202,8 @@ function Playground() {
           </div>
           <div className='bg-pink-300 flex gap-4 p-4 w-full overflow-x-auto' style={{ height: "92%" }}>
             <div className='flex gap-4'>
-              <Board board={data} cookies={cookies}/>
+              {view==='Board'  &&<Board board={data} cookies={cookies}/>}
+              {view==='Table' &&<Table />}
             </div>
           </div>
 

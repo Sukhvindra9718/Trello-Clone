@@ -17,7 +17,7 @@ function Login() {
 
 
   const handleLogin = () => {
-    const url = 'http://192.168.1.11:5000/api/v1/login'
+    const url = 'http://localhost:5000/api/v1/login'
     fetch(url, {
       method: 'POST',
       headers: {
@@ -38,7 +38,7 @@ function Login() {
   }
 
   const handleVerifyEmail = () => {
-    const url = 'http://192.168.1.11:5000/api/user/verifyEmail'
+    const url = 'http://localhost:5000/api/user/verifyEmail'
     fetch(url, {
       method: 'POST',
       headers: {

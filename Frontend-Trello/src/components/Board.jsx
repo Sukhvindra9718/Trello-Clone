@@ -83,7 +83,7 @@ const Board = ({ board, cookies }) => {
       return;
     }
 
-    const url = 'http://192.168.1.11:5000/api/v1/createList';
+    const url = 'http://localhost:5000/api/v1/createList';
     const data = {
       listTitle: listTitle,
       listOrder: board.lists.length,
